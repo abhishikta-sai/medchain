@@ -47,7 +47,7 @@ The Pharmaceutical supply chain is the sequence of activities and process to bri
 
 #### Prerequisites
 ---
-- Flask
+- Nodejs v8.12 or above
 - Truffle v5.0.0 (core: 5.0.0) (http://truffleframework.com/docs/getting_started/installation)
 - Solidity v0.5.0
 - Metamask (https://metamask.io)
@@ -83,3 +83,30 @@ Link : ```http://remix.ethereum.org/#optimize=false&evmVersion=null&version=solj
 4. Then deploy the Manufacturer and Wholesaler contracts by passing the address of the deployed admin contract and their License numbers.
 
 5. Then deploy Customer contract by passing the address of the deployed admin contract.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Project requirements:
+
+The project submission must include
+- A presentation of 6 slides detailing the features and technology highlights of your project
+- The complete code 
+- The complete code and the presentation must be available on github
+
+The project will be evaluated based on the following criteria
+- UI & Functionality
+- Inclusion of features with AJAX ,COMET. Web Services etc
+- Effective use of Frameworks
+- Intelligent Component of you project
+
