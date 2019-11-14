@@ -47,7 +47,7 @@ The Pharmaceutical supply chain is the sequence of activities and process to bri
 
 #### Prerequisites
 ---
-- Nodejs v8.12 or above
+- Flask
 - Truffle v5.0.0 (core: 5.0.0) (http://truffleframework.com/docs/getting_started/installation)
 - Solidity v0.5.0
 - Metamask (https://metamask.io)
