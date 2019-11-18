@@ -110,3 +110,6 @@ The project will be evaluated based on the following criteria
 - Effective use of Frameworks
 - Intelligent Component of you project
 
+
+236's part: 
+Statistics page - generate data for particular medicine by a manufacturer - manufacturing date, manufacturer, expiry date, medicine name and quantity and purchase date. 
