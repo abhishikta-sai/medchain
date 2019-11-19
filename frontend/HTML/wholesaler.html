@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmaceutical Supply Chain</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.33/dist/web3.min.js"></script>
+    <script type="module" src="./js/parts.js"></script>
+    
+</head>
+
+<body>
+    <div class="container">
+        <nav class="teal">
+            <div class="nav-wrapper">
+                <!-- <a href="#" class="brand-logo right">Logo</a> -->
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li><a href="index.html">Admin</a></li>
+                    <li><a href="manufacturer.html">Manufacturer</a></li>
+                    <li><a href="wholesaler.html">Wholesaler</a></li>
+                    <li><a href="customer.html">Customer</a></li>
+                </ul>
+            </div>
+        </nav>
+        <h2>Wholesaler</h2>
+        <div class="row">
+            <div class="col s6">
+                <label>Address: </label>
+                <p id="part-factory-address">0x11AB7628AC5D3420</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                
+                <label>Manufacturer: </label>
+                <select id="create-part-type" class="browser-default">
+                    <option>Select Manufacturer</option>
+                    <option>Manufacturer 1 (0x8100E20F7560989A)</option>
+                    <option>Manufacturer 2 (0x81041CA901264982)</option>
+                    <option>Manufacturer 3 (0x8106E48AA331876C)</option>
+                </select>
+                <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                
+                <label>Medicine: </label>
+                <select id="create-part-type" class="browser-default">
+                    <option>Select Medicine (Medicine ID - Name)</option>
+                    <option>PAR386 - Crocin</option>
+                    <option>CET598 - Okacet</option>
+                    <option></option>
+                </select>
+                <br>
+            </div>
+        </div>
+        <table style="width:100%">
+            <tr>
+                <th>Batch ID</th>
+                <th>Quantity</th>
+                <th>Mfg. Date</th>
+                <th>Best Before</th>
+            </tr>
+            <tr>
+                <td>ABC</td>
+                <td>10</td>
+                <td>09-19</td>
+                <td>08-21</td>
+            </tr>
+            <tr>
+                <td>XYZ</td>
+                <td>10</td>
+                <td>07-19</td>
+                <td>06-21</td>
+            </tr>
+        </table>
+        <div class="row">
+            <h3> Request medicine</h3>
+            <form>
+                Medicine Name: <input type="text"><br>
+                Medicine ID : <input type="text"><br>
+                License : <input type="text"><br>
+                Quantity : <input type="text" name=""><br>
+                <input type="submit" value="Send Request">
+            </form>
+        </div>
+             	<p> Request has been successfully placed</p>
+
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
