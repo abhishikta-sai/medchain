@@ -9,6 +9,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.33/dist/web3.min.js"></script>
     <script type="module" src="./js/parts.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/select2.min.css" />
+    <script src="../js/select2.min.js"></script>
     
 </head>
 
@@ -33,62 +36,58 @@
             </div>
         </div>
         <div class="row">
-            <h3>Check stock</h3>
-            <select id="create-part-type" class="browser-default">
-                    <option>Medicine name</option>
-                    <option>Crocin</option>
-                    <option>Okacet</option>
-                </select>
-                <table style="width:100%">
-  <tr>
-    <th>Batch ID</th>
-    <th>Medicine ID</th>
-    <th>Medicine Name</th>
-    <th>Wholesaler address</th>
-    <th>Wholesaler name</th>
-    <th>Quantity</th>
-    <th>Best Before</th>
-  </tr>
-  <tr>
-    <td>ABC</td>
-    <td>PAR386</td>
-    <td>Crocin</td>
-    <td>0x11AB7628AC5D3420</td>
-    <td>Wholesaler 1</td>
-    <td>10</td>
-    <td>08-21</td>
-  </tr>
-  <tr>
-    <td>ACD</td>
-    <td>PAR386</td>
-    <td>Crocin</td>
-    <td>0x11AB7628AC5D3423</td>
-    <td>Wholesaler 2</td>
-    <td>20</td>
-    <td>06-23</td>
-  </tr>
-</table>
+            <h3>Check Stock</h3>
+            <select id="create-part-type" style='width: 200px;' class="browser-default">
+                <option>Crocin</option>
+                <option>Okacet</option>
+            </select>
+            <table style="width:100%">
+                <tr>
+                    <th>Batch ID</th>
+                    <th>Medicine ID</th>
+                    <th>Medicine Name</th>
+                    <th>Wholesaler address</th>
+                    <th>Wholesaler name</th>
+                    <th>Quantity</th>
+                    <th>Best Before</th>
+                </tr>
+                <tr>
+                    <td>ABC</td>
+                    <td>PAR386</td>
+                    <td>Crocin</td>
+                    <td>0x11AB7628AC5D3420</td>
+                    <td>Wholesaler 1</td>
+                    <td>10</td>
+                    <td>08-21</td>
+                </tr>
+                <tr>
+                    <td>ACD</td>
+                    <td>PAR386</td>
+                    <td>Crocin</td>
+                    <td>0x11AB7628AC5D3423</td>
+                    <td>Wholesaler 2</td>
+                    <td>20</td>
+                    <td>06-23</td>
+                </tr>
+            </table>
         </div>
-                <div>
-                    <h3> Validate batch ID</h3>
-                    <form>
-                        Batch ID: <input type="text"><br>
-                        <input type="submit" value="Validate">
-                    </form>
-                </div>
-
-                <div>
-                    <h3>Trace transaction</h3>
-                    <form>
-                        Transaction ID: <input type="text"><br>
-                        <input type="submit" value="Trace">
-                    </form>
-                </div>
-                
-                </div>
-            </div>
+        <div class="row">
+            <h3> Buy Medicine</h3>
+            <form>
+                Medicine Name: <input type="text"><br>
+                Medicine ID : <input type="text"><br>
+                License : <input type="text"><br>
+                Quantity : <input type="text" name=""><br>
+                <input type="submit" value="Send Request">
+            </form>
         </div>
+        <p> Request has been successfully placed</p>            
     </div>
 </body>
-
+<script>
+    $(document).ready(function(){
+        // Initialize select2
+        $("#create-part-type").select2();
+    });
+</script>
 </html>
