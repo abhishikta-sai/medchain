@@ -9,7 +9,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.33/dist/web3.min.js"></script>
     <script type="module" src="./js/parts.js"></script>
-    
+    <script src="../js/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/select2.min.css" />
+    <script src="../js/select2.min.js"></script>
 </head>
 
 <body>
@@ -33,7 +35,20 @@
             </div>
         </div>
         <div class="row">
-            <h3> Request medicine</h3>
+            <div class="col s12">
+                
+                <label>Manufacturer: </label>
+                <select id="create-part-type" class="browser-default">
+                    <option>Select Manufacturer</option>
+                    <option>Manufacturer 1 (0x8100E20F7560989A)</option>
+                    <option>Manufacturer 2 (0x81041CA901264982)</option>
+                    <option>Manufacturer 3 (0x8106E48AA331876C)</option>
+                </select>
+                <br>
+            </div>
+        </div>
+        <div class="row">
+            <h3> Validate Medicine</h3>
             <form>
                 Medicine Name: <input type="text"><br>
                 Medicine ID : <input type="text"><br>
@@ -42,12 +57,7 @@
                 <input type="submit" value="Request">
             </form>
         </div>
-             	<p> Batch ID for your request is: LMN</p>
-
-
-                </div>
-            </div>
-        </div>
+        <p> Batch ID for your request is: LMN</p>
     </div>
 </body>
 
