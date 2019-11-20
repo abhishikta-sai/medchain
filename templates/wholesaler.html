@@ -8,10 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.33/dist/web3.min.js"></script>
-    <script type="module" src="./js/parts.js"></script>
-    <script src="../js/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/select2.min.css" />
-    <script src="../js/select2.min.js"></script>
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/select2.min.css') }}" />
+    <script src="{{ url_for('static', filename='js/select2.min.js') }}"></script>
 </head>
 
 <body>
@@ -20,71 +19,68 @@
             <div class="nav-wrapper">
                 <!-- <a href="#" class="brand-logo right">Logo</a> -->
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
-                    <li><a href="index.html">Admin</a></li>
-                    <li><a href="manufacturer.html">Manufacturer</a></li>
-                    <li><a href="wholesaler.html">Wholesaler</a></li>
-                    <li><a href="customer.html">Customer</a></li>
+                    <li><a href="admin">Admin</a></li>
+                    <li><a href="manufacturer">Manufacturer</a></li>
+                    <li><a href="wholesaler">Wholesaler</a></li>
+                    <li><a href="customer">Customer</a></li>
                 </ul>
             </div>
         </nav>
-        <h2>Admin</h2>
+        <h2>Wholesaler</h2>
         <div class="row">
             <div class="col s6">
                 <label>Address: </label>
-                <p id="part-factory-address">0x84C4770F756B1DF9</p>
+                <p id="part-factory-address">0x11AB7628AC5D3420</p>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col s6">
-                <label>Valid Licences: </label>
-                <p id="part-factory-address">PHMA000001</p>
-                <p id="part-factory-address">PHMA000002</p>
-                <p id="part-factory-address">PHMA000003</p>
-            </div>
-        </div>
-
         
         <div class="row">
             <div class="col s12">
-                
-                <label>Manufacturer: </label>
-                <select id="create-part-type" class="browser-default">
-                    <option>Select Manufacturer</option>
-                    <option>Manufacturer 1 (0x8100E20F7560989A)</option>
-                    <option>Manufacturer 2 (0x81041CA901264982)</option>
-                    <option>Manufacturer 3 (0x8106E48AA331876C)</option>
+                <label>Medicine: </label><br>
+                <select id='medicine-list' style='width: 200px;'>
+                    <option>Crocin</option>
+                    <option>Okacet</option>
                 </select>
-                <br>
             </div>
         </div>
+        
         <table style="width:100%">
             <tr>
-                <th>Medicine ID</th>
-                <th>Medicine Name</th>
                 <th>Batch ID</th>
                 <th>Quantity</th>
                 <th>Mfg. Date</th>
                 <th>Best Before</th>
             </tr>
             <tr>
-                <td>PAR386</td>
-                <td>Crocin</td>
                 <td>ABC</td>
                 <td>10</td>
                 <td>09-19</td>
                 <td>08-21</td>
             </tr>
             <tr>
-                <td>CET598</td>
-                <td>Okacet</td>
                 <td>XYZ</td>
                 <td>10</td>
                 <td>07-19</td>
                 <td>06-21</td>
             </tr>
         </table>
+        <div class="row">
+            <h3> Buy Medicine</h3>
+            <form>
+                Medicine Name: <input type="text"><br>
+                Medicine ID : <input type="text"><br>
+                License : <input type="text"><br>
+                Quantity : <input type="text" name=""><br>
+                <input type="submit" value="Send Request">
+            </form>
+        </div>
+        <p> Request has been successfully placed</p>               
     </div>
 </body>
-
+<script>
+    $(document).ready(function(){
+        // Initialize select2
+        $("#medicine-list").select2();
+    });
+</script>
 </html>
