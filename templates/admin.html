@@ -95,8 +95,9 @@
 
         function getMedicineData()
         {
+            console.log($('#manufacturer-option').find(":selected").attr('value'))
             $.ajax({
-                url:'/admin',
+                url:'/getmandetails',
                 method:'POST',
                 data:{'manufacturer_option': $('#manufacturer-option').find(":selected").attr('value'),
                       csrfmiddlewaretoken:'{{ csrf_token }}'},
