@@ -1,4 +1,5 @@
 pragma solidity ^0.5.0;
+pragma experimental ABIEncoderV2;
 
 contract Admin{
     uint public recordCount = 0;
@@ -45,6 +46,16 @@ contract Admin{
         getrecids[hashedaccess] = recordCount;
     }
 
+    function sendManDetails(address _manufacturer) public returns (Record[] memory outArray_){
+        uint j = 0;
+        for (uint index = 0; index < recordCount; index++) {
+            if(records[index].manufacturer == _manufacturer){
+                outArray_[j] = records[index];
+                j = j+1;
+            }
+        }
+    }
+
     function addManufactureRecord(address _manufacturer,uint _med_id,uint _quantity,uint _licenseMan,uint _licenseWho, string calldata _medName,string calldata _manDate,string calldata _expDate) external returns(bytes32){
         uint tempSecretx = block.timestamp;
         bytes32 batchNo = keccak256(abi.encodePacked(_manufacturer,_med_id,_quantity, tempSecretx));
@@ -82,7 +93,7 @@ contract Admin{
         return num;
     }
     
-    function getWholeSale(uint _i) external view returns(uint,address,uint,string memory){
+    function getWholeSale(uint _i) external view returns(uint,address,uint,string memory) returns{
         for(uint i=_i;i<=recordCount;i++){
             if(records[i].licenseWhole != 0)
             return (1,records[i].manufacturer,records[i].quantity,records[i].medName);
@@ -108,9 +119,10 @@ contract Manufacture{
         _;
     }
 
-    function addMedicineRecord(uint _med_id,uint _quantity,string memory _medName,string memory _manDate,string memory _expDate) public onlyOwner{
+    function addMedicineRecord(uint _med_id,uint _quantity,string memory _medName,string memory _manDate,string memory _expDate) public onlyOwner returns(bytes32){
     Admin adminConnect = Admin(Adminaddress);
     bytes32 batchNo = adminConnect.addManufactureRecord(msg.sender,_med_id,_quantity,license,0,_medName,_manDate,_expDate);
+    return batchNo;
     }
     
     function sellMedicine (address _wholesaler, uint _med_id, uint _quantity, uint _license) external returns(bytes32){
