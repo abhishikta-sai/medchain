@@ -4,11 +4,13 @@ This project showcases the journey of Medicine on blockchain.
 
 The Pharmaceutical supply chain is the sequence of activities and process to bring medicines from Manufacturer to Customer.
 
+
 #### Problems in Existing System
 ---
 - Slow Process and Error prone paper work
 - Mutable and Invalid source
 - Lack of coordination
+
 
 #### What we are providing
 ---
@@ -19,6 +21,7 @@ The Pharmaceutical supply chain is the sequence of activities and process to bri
 - Seamless collaboration between all parties
 - Reduce paper work and Speedup process
 
+
 #### Contracts
 ---
 1. Admin
@@ -26,32 +29,30 @@ The Pharmaceutical supply chain is the sequence of activities and process to bri
 3. Wholesaler
 4. Customer
 
-**Admin :** Admin stores the records of all medicines manufactured and uses it to validate future transactions.
+**Admin:** Admin stores the records of all medicines manufactured and uses it to validate future transactions.
 
-**Transporter :** Transporter are responsible for shipping packages/consignment form one stage to other.
+**Manufacturer:** Manufacturer is responsible to manufacturer new medicine batches, by getting new batchIds from Admin that is used to manufacture new batch medicine and quantity.
 
-**Manufacturer :** Manufacturer is responsible to manufacturer new medicine batches, by getting new batchIds from Admin that is used to manufacture new batch medicine and quantity.
+**Wholesaler:** Wholesaler is reponsible to receive medicine from Manufacturer and validate medicine recieved, than sell it to the customer or other Wholesaler/Retailers. 
 
-**Wholesaler :** Wholesaler is reponsible to receive medicine from Manufacturer and validate medicine recieved, than sell it to the customer or other Wholesaler/Retailers. 
+**Customer:** Customer can enquire the avalaibility of the medicine among different wholesaler, and also validate the purchased medicine genunity.
 
-**Distrubuter :** Distributer is reponsible to distribute medicne to pharms and do varification on medicine quality and condition.
-
-**Customer :** Customer can enquire the avalaibility of the medicine among different wholesaler, and also validate the purchased medicine genunity.
 
 #### Tools and Technologies
 ---
 - Solidity (Ethereum Smart Contract Language)
 - Metamask (Ethereum wallet)
 - Truffle
-- Web3JS
+- Web3 Python
+
 
 #### Prerequisites
 ---
-- Nodejs v8.12 or above
 - Truffle v5.0.0 (core: 5.0.0) (http://truffleframework.com/docs/getting_started/installation)
 - Solidity v0.5.0
 - Metamask (https://metamask.io)
 - Ganache (https://truffleframework.com/docs/ganache/quickstart)
+
 
 #### Setup
 ---
@@ -59,7 +60,7 @@ The Pharmaceutical supply chain is the sequence of activities and process to bri
 1. Ganache :
 For first time setup :
 - Run Ganache : ```ganache-cli```
-- Store the mnemonics for future use
+- Store the mnemonics for future use (mnemonic is a set of words to identify the Ganache instance)
 
 For repeated use:
 - Run Ganache using the stored mnemonics : ```ganache-cli -m "mnemonics"```
@@ -68,13 +69,12 @@ For repeated use:
 - goto the project folder in terminal
 - truffle compile and deployment : ```truffle migrate --restart```
 
-**Remix.etheruem platform**
-
+**Remix.etheruem platform (Testing)**
 (the connection should be "http" and not "https")
 
-Link : ```http://remix.ethereum.org/#optimize=false&evmVersion=null&version=soljson-v0.5.11+commit.c082d0b4.js```
+Link: ```http://remix.ethereum.org/#optimize=false&evmVersion=null&version=soljson-v0.5.11+commit.c082d0b4.js```
 
-1. upload the solidity file "SupplyChain.sol"
+1. Upload the solidity file "SupplyChain.sol"
 
 2. Compile it using compile button in the sidebar (it is the third symbol from top)
 
@@ -85,6 +85,7 @@ Link : ```http://remix.ethereum.org/#optimize=false&evmVersion=null&version=solj
 5. Then deploy Customer contract by passing the address of the deployed admin contract.
 
 
+<<<<<<< HEAD
 
 
 
@@ -98,6 +99,9 @@ Link : ```http://remix.ethereum.org/#optimize=false&evmVersion=null&version=solj
 
 
 Project requirements:
+=======
+#### Project requirements:
+>>>>>>> bb3ea206a590f1e67fa540194c651d434a022196
 
 The project submission must include
 - A presentation of 6 slides detailing the features and technology highlights of your project
@@ -110,6 +114,8 @@ The project will be evaluated based on the following criteria
 - Effective use of Frameworks
 - Intelligent Component of you project
 
-
+<<<<<<< HEAD
+=======
 236's part: 
 Statistics page - generate data for particular medicine by a manufacturer - manufacturing date, manufacturer, expiry date, medicine name and quantity and purchase date. 
+>>>>>>> bb3ea206a590f1e67fa540194c651d434a022196
