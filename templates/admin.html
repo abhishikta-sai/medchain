@@ -47,10 +47,10 @@
         <div class="row">
             <div class="col s12">
                 <label>Manufacturer: </label>
-                <select onchange="medicineDetails()" id="create-part-type" class="browser-default">
-                    <option value="1"> (0x8100E20F7560989A)</option>
-                    <option value="2">Manufacturer 2 (0x81041CA901264982)</option>
-                    <option value="3">Manufacturer 3 (0x8106E48AA331876C)</option>
+                <select onchange="medicineDetails()" id="manufacturer-option" class="browser-default">
+                    <option value="m1">Save-a-life Solutions (0x8100E20F7560989A)</option>
+                    <option value="m2">Pro-Medical Solutions (0x81041CA901264982)</option>
+                    <option value="m3">Med-Awesome Solutions (0x8106E48AA331876C)</option>
                 </select>
                 <br>
             </div>
@@ -83,7 +83,6 @@
             $('#medicine-details').append($("<tr></tr>").attr("id","medicine-row"));
             $('#medicine-row').append($("<td></td>").text('CET598'));
             $('#medicine-row').append($("<td></td>").text('Okacet'));
-            $('#medicine-row').append($("<td></td>").text('XYZ'));
             $('#medicine-row').append($("<td></td>").text('10'));
             $('#medicine-row').append($("<td></td>").text('07-19'));
             $('#medicine-row').append($("<td></td>").text('06-21'));
@@ -94,12 +93,13 @@
             $('#medicine-holder').show()
         }
 
-        function getSearchUSN()
+        function getMedicineData()
         {
             $.ajax({
-                url:'/admin/search',
+                url:'/admin',
                 method:'POST',
-                data:{'usn':$('#search-usn').val(), csrfmiddlewaretoken:'{{ csrf_token }}'},
+                data:{'manufacturer_option': $('#manufacturer-option').find(":selected").attr('value'),
+                      csrfmiddlewaretoken:'{{ csrf_token }}'},
                 dataType:'json',
                 success:function(data)
                 {

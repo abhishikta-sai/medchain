@@ -1,91 +1,44 @@
-from flask import Flask, render_template, flash, request, session, redirect, url_for
+from flask import Flask, render_template, flash, request, session, redirect, url_for, make_response
+from flask_restful import Resource, Api
 # from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 import requests;
 import json;
 
 app = Flask(__name__)
 app.secret_key = 'this is the end'
+api = Api(app)
 
 
-@app.route("/", methods=['GET', 'POST'])
-def home():
-    return redirect(url_for('admin'))
+class Index(Resource):
+    def get(self):
+        return redirect(url_for('admin'))
 
-@app.route("/admin", methods=['GET', 'POST'])
-def admin():
-    return render_template("index.html")
+api.add_resource(Index, '/')
 
-@app.route("/manufacturer", methods=['GET', 'POST'])
-def manufacturer():
-    return render_template("manufacturer.html")
+class Admin(Resource):
+    def get(self):
+        return make_response(render_template('admin.html'))
 
-@app.route("/wholesaler", methods=['GET', 'POST'])
-def wholesaler():
-    return render_template("wholesaler.html")
+api.add_resource(Admin, '/admin')
 
-@app.route("/customer", methods=['GET', 'POST'])
-def customer():
-    return render_template("customer.html")
- 
+class Manufacturer(Resource):
+    def get(self):
+        return make_response(render_template('manufacturer.html')) 
 
-# @app.route("/results", methods=['GET'])
-# def results():
-#     try:
-#         resp = requests.get(backend_addr+'results')
-#         if(resp.status_code!=200):
-#             return render_template('confirmation.html',message=resp.text),resp.status_code
-#         result = eval(resp.text)
-#         print(result)
-#         result.sort(reverse=True,key=lambda x: x[2])
-#         return render_template('results.html',result=result)
-#     except:
-#         return render_template('confirmation.html',message="Error processing"),500
-    
-# @app.route("/verify", methods=['GET', 'POST'])
-# def verify():
-#     try:
-#         resp = requests.get(backend_addr+'isended')
-#         if(not eval(resp.text)):
-#             if request.method == 'POST':
-#                 aid = request.form['aid']
-#                 bio = request.form['biometric']
-#                 resp = requests.get(backend_addr+'number_of_users')
-#                 number_of_accounts = int(resp.text)
-#                 if(bio == 'yes' and aid.isdigit() and int(aid)<=number_of_accounts):
-#                     session['verified'] = True
-#                     session['aid'] = int(aid)
-#                     return redirect(url_for('vote'))
-#             return render_template('verification.html')
-#         else:
-#             return render_template('confirmation.html',message="Election ended",code=400),400
-#     except:
-#         return render_template('confirmation.html',message="Error processing"),500
+api.add_resource(Manufacturer, '/manufacturer')
 
-# @app.route("/vote", methods=['GET', 'POST'])
-# def vote():
-#         resp = requests.get(backend_addr+'isended')
-#         if(not eval(resp.text)):
-#             if('verified' in session):
-#                 resp = requests.get(backend_addr+'candidates_list')
-#                 candidates = eval(resp.text)
-#                 print(candidates)
-#                 candidates1 = candidates[:int(len(candidates)/2)]
-#                 candidates2 = candidates[int(len(candidates)/2):]
-#                 if request.method == 'POST':
-#                     aid = session['aid']
-#                     session.pop('verified')
-#                     session.pop('aid')
-#                     candidate = request.form['candidate']
-#                     cid = candidates.index(candidate)+1
-#                     print(cid)
-#                     resp = requests.post(backend_addr,json.dumps({'aadhaarID':aid,'candidateID':cid}))
-#                     print(resp)
-#                     return render_template('confirmation.html',message=resp.text,code=resp.status_code),resp.status_code
-#                 return render_template('vote.html',candidates1=candidates1,candidates2=candidates2),200
-#             else:
-#                 return redirect(url_for('verify'))
-#         else:
-            # return render_template('confirmation.html',message="Election ended",code=400),400
+class Wholesaler(Resource):
+    def get(self):
+        return make_response(render_template('wholesaler.html')) 
+
+api.add_resource(Wholesaler, '/wholesaler')
+
+class Customer(Resource):
+    def get(self):
+        return make_response(render_template('customer.html')) 
+
+api.add_resource(Customer, '/customer')
+
     
 if __name__ == '__main__':
 	app.run()
