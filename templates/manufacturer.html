@@ -23,6 +23,8 @@
                     <li><a href="manufacturer">Manufacturer</a></li>
                     <li><a href="wholesaler">Wholesaler</a></li>
                     <li><a href="customer">Customer</a></li>
+                    <li><a href="intellisearch">Intelli Search</a></li>
+                    <li><a href="drugsearch">Drug Search</a></li>
                 </ul>
             </div>
         </nav>
@@ -31,11 +33,11 @@
         
         <div class="row">
             <div class="col s12">
-                <label>Select Manufacturer</label>
-                <select id="create-part-type" class="browser-default">
-                    <option>Manufacturer 1 (0x8100E20F7560989A)</option>
-                    <option>Manufacturer 2 (0x81041CA901264982)</option>
-                    <option>Manufacturer 3 (0x8106E48AA331876C)</option>
+                <label>Manufacturer: </label>
+                <select onchange="getMedicineData()" id="manufacturer-option" class="browser-default">
+                    <option value="0x8100E20F7560989A">Save-a-life Solutions</option>
+                    <option value="0x81041CA901264982">Pro-Medical Solutions</option>
+                    <option value="0x8106E48AA331876C">Med-Awesome Solutions</option>
                 </select>
                 <br>
             </div>

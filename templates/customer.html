@@ -19,10 +19,12 @@
             <div class="nav-wrapper">
                 <!-- <a href="#" class="brand-logo right">Logo</a> -->
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
-                    <li><a href="admin.html">Admin</a></li>
-                    <li><a href="manufacturer.html">Manufacturer</a></li>
-                    <li><a href="wholesaler.html">Wholesaler</a></li>
-                    <li><a href="customer.html">Customer</a></li>
+                    <li><a href="admin">Admin</a></li>
+                    <li><a href="manufacturer">Manufacturer</a></li>
+                    <li><a href="wholesaler">Wholesaler</a></li>
+                    <li><a href="customer">Customer</a></li>
+                    <li><a href="intellisearch">Intelli Search</a></li>
+                    <li><a href="drugsearch">Drug Search</a></li>
                 </ul>
             </div>
         </nav>
@@ -39,6 +41,11 @@
                 <option>Crocin</option>
                 <option>Okacet</option>
             </select>
+        </div>
+        <div id="medicine-holder" style="display:none">
+            <table id="medicine-details">
+            </table>
+        </div>
             <table style="width:100%">
                 <tr>
                     <th>Batch ID</th>
@@ -47,7 +54,7 @@
                     <th>Wholesaler address</th>
                     <th>Wholesaler name</th>
                     <th>Quantity</th>
-                    <th>Best Before</th>
+                    <th>Expiry Date</th>
                 </tr>
                 <tr>
                     <td>ABC</td>
@@ -70,17 +77,64 @@
             </table>
         </div>
         <div class="row">
-            <h3> Buy Medicine</h3>
+            <h3>Buy Medicine</h3>
             <form>
                 Medicine Name: <input type="text"><br>
-                Medicine ID : <input type="text"><br>
-                License : <input type="text"><br>
-                Quantity : <input type="text" name=""><br>
+                Medicine ID: <input type="text"><br>
+                License: <input type="text"><br>
+                Quantity: <input type="text" name=""><br>
                 <input type="submit" value="Send Request">
             </form>
         </div>
         <p> Request has been successfully placed</p>            
     </div>
+    <script>
+        function medicineDetails()
+        {
+
+            try
+            {
+                $('#medicine-details').remove();
+            }
+            catch(e)
+            {
+            }
+            $("#medicine-holder").append($("<table></table>").attr("id","medicine-details"))
+            $('#medicine-details').append($("<tr></tr>").attr("id","medicine-header"));
+            $('#medicine-header').append($("<td></td>").text('Medicine ID'));
+            $('#medicine-header').append($("<td></td>").text('Medicine Name'));
+            $('#medicine-header').append($("<td></td>").text('Quantity'));
+            $('#medicine-header').append($("<td></td>").text('Mfg. Date'));
+            $('#medicine-header').append($("<td></td>").text('Expiry Before'));
+            $('#medicine-details').append($("<tr></tr>").attr("id","medicine-row"));
+            $('#medicine-row').append($("<td></td>").text('CET598'));
+            $('#medicine-row').append($("<td></td>").text('Okacet'));
+            $('#medicine-row').append($("<td></td>").text('10'));
+            $('#medicine-row').append($("<td></td>").text('07-19'));
+            $('#medicine-row').append($("<td></td>").text('06-21'));
+            // for (i = 0;i < json['company_list'].length;i++)
+            // {
+            //     $('#company-list').append($('<option></option>').attr('value',json['company_list'][i]).text(json['company_list'][i]));
+            // }
+            $('#medicine-holder').show()
+        }
+
+        function getMedicineData()
+        {
+            console.log($('#manufacturer-option').find(":selected").attr('value'))
+            $.ajax({
+                url:'/getmandetails',
+                method:'POST',
+                data:{'manufacturer_option': $('#manufacturer-option').find(":selected").attr('value'),
+                      csrfmiddlewaretoken:'{{ csrf_token }}'},
+                dataType:'json',
+                success:function(data)
+                {
+                    medicineDetails(data)
+                }
+            })
+        }
+    </script>
 </body>
 <script>
     $(document).ready(function(){
