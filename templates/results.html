@@ -7,26 +7,52 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+  function init() {
+  	xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = func;
+	xhr.open("GET","http://127.0.0.1:5000/searchMedicines?search_field={{result.search_query}}",true);
+	xhr.send(null);
+  }
+
+  setTimeout(init, 3000)
+
+  function func() {
+  	if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        console.log(myArr["search_results"]);
+        var div = document.getElementsByClassName("container")[0];
+        var ul = document.createElement("ul");
+        ul.className = "list-group";
+        console.log(myArr)
+        for(i=0; i < myArr["search_results"].length; i++) {
+        	console.log(i)
+        	var li = document.createElement("li");
+            li.className = "list-group-item list-group-item-success";
+        	var sub_div = document.createElement("div");
+        	var h2 = document.createElement("h2");
+        	h2.innerHTML = myArr["search_results"][i][0];
+        	var h4 = document.createElement("h4");
+        	h4.innerHTML = "&emsp;"
+        	var br = document.createElement("br");
+        	var span = document.createElement("span");
+        	span.innerHTML = myArr["search_results"][i][1];
+        	sub_div.appendChild(h2);
+        	sub_div.appendChild(h4);
+        	sub_div.appendChild(br);
+        	sub_div.appendChild(span);
+        	li.appendChild(sub_div)
+        	ul.appendChild(li);
+        }
+        div.appendChild(ul);
+    }
+
+  }
+  </script>
 </head>
 <body>
 <br><br><br><br>
-<div class="container">
-    <h2>Top Results for <b> "{{result.search_query}}" </b></h2>
-    <script type="text/javascript">
-        console.log("Hello world")
-        console.log("{{result.search_query}}")
-    </script>
-  <ul class="list-group">
-      {% for item in result.search_results %}
-    <li class="list-group-item list-group-item-success">
-        <div>
-            <h2> {{item.0}} </h2> <h4>&emsp;</h4>    <br>
-            {{item.1}}
-        </div>
-    </li>
-      {% endfor %}
-  </ul>
-</div>
 
-</body>
-</html>
+<div class="container"> 
+<h2> Top results for <b> {{result.search_query}} </b> </h2>
+</div>

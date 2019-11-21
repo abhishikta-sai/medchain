@@ -76,19 +76,20 @@ class SearchFieldView(Resource):
         return make_response(render_template('search.html')) 
 api.add_resource(SearchFieldView, '/search')
 
-class SearchResultsPage(Resource):
+
+class SearchResultPage(Resource):
     def get(self):
+        search_request = request.args.get("search_field")
+        session["search_query"] = search_request
         print(session["search_query"])
-       	print(session["search_results"])
-        return make_response(render_template('results.html', result={"search_query": session["search_query"], "search_results": session["search_results"]})) 
+        return make_response(render_template('results.html', result={"search_query": session["search_query"]}))
+api.add_resource(SearchResultPage, '/searchresultpage')
 
-api.add_resource(SearchResultsPage, '/searchresultpage')
-
-
+nlp = spacy.load("en_core_web_md")
 class SearchMedicines(Resource):
+    global nlp
     api_name = "Search Company api"
     tag_objects = []
-    nlp = spacy.load("en_core_web_md")
     names = []
     summaries = []
     categories = []
@@ -98,22 +99,23 @@ class SearchMedicines(Resource):
         tag_objects.append(nlp(" ".join(item["Tags"].split(","))))
 
     def get(self):
-        print(self.api_name)
-        search_request = request.args.get("search_field")
-        print(search_request)
-        search_request_object = self.nlp(search_request)
+        search_request_object = nlp(request.args.get("search_field"))
         similarities = []
         for i in range(len(self.tag_objects)):
             similarities.append([self.names[i].replace(u'\u2013', '-'), self.summaries[i].replace(u'\u2013', '-'),
                                  self.tag_objects[i].similarity(search_request_object)])
         similarities.sort(key=lambda x: x[2], reverse=True)
         similarities = similarities[0:5]
-        session["search_query"] = search_request.replace(u'\u2013', '-')
         session["search_results"] = similarities
-        return redirect(url_for('searchresultspage'))
-
+        return jsonify(
+            search_results=similarities
+        )
 
 api.add_resource(SearchMedicines, '/searchMedicines')
+
+
+
+
     
     
 
