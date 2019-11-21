@@ -12,6 +12,7 @@ collection = db.drugs
 def f1(string):
     return re.search('\[[0-9]+\]', string)
 
+
 def get_wiki_info(page_title):
     response = requests.get("https://en.wikipedia.org/wiki/"+page_title)
     if response.status_code != 200:
@@ -31,8 +32,6 @@ def get_wiki_info(page_title):
     print(result)
     print(summary)
     return [result, summary]
-
-
 
 
 file = open("drugs.txt",'r')
