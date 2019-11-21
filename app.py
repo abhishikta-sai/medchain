@@ -42,7 +42,7 @@ class Admin(Resource):
     def post(self):
         res = requests.post(url + '/admin/getmandetails', json.dumps([request.form.get('manufacturer_option')]))
         # res is a dictionary of dictionaries, where the keys are indexes
-        return make_response("hello")
+        return jsonify(res)
 
 
 api.add_resource(Admin, '/admin')
@@ -57,31 +57,66 @@ class Manufacturer(Resource):
         x = {'man_id': hc[request.form['man_name']], 'man_name': request.form['man_name'], 'med_id': request.form['med_id'], 'med_name': request.form['med_name'], 'quantity': request.form['quantity'], 'man_date': datetime.strftime(request.form['man_date']), 'exp_date': datetime.strftime(request.form['exp_date'])}
         res = requests.post(url + '/manaddmedicines', data=x)
         print(res['hash']) # byte 32
-        return make_response("hello")
+        return jsonify(res)
         # returns a Batch Number
 
 
 api.add_resource(Manufacturer, '/manufacturer')
 
 
-class WholesalerPage(Resource):
+class Wholesaler(Resource):
     def get(self):
         return make_response(render_template('wholesaler.html'))
 
     def post(self):
-        x = {'man_id':hc[request.form['man_name']],
+        x = {'man_id': hc[request.form['man_name']],
              'man_name': request.form['man_name'],
              'med_name': request.form['med_name'],
              'med_id': request.form['med_id'],
-             'quantity': request.form['quantity'],
-            }
+             'quantity': request.form['quantity'], }
         print(x)
         res = requests.post(url + '/wsbuymedicines', data=x)
         print(res['hash']) # byte 32
-        return make_response("hello")
+        return jsonify(res)
 
 
-api.add_resource(WholesalerPage, '/wholesaler')
+api.add_resource(Wholesaler, '/wholesaler')
+
+
+class WholesalerData(Resource):
+    def get(self):
+        med_names = {}
+        for item in data_collection.find():
+            med_names[item['Name']] = item['Name']
+        return jsonify(med_names)
+
+    def post(self):
+        drug = request.form.get('drug')
+        print(drug)
+        med_names = []
+        man_names = []
+        quantity = []
+        man_date = []
+        exp_date = []
+        for item in data_collection.find():
+            med_names.append(item['Name'])
+            man_names.append(item['Manufacturer'])
+            quantity.append(item['Quantity'])
+            man_date.append(item['Manufacturing Date'])
+            exp_date.append(item['Expiry Date'])
+        res = []
+        for i in range(len(med_names)):
+            if med_names[i] == drug:
+                d = {}
+                d['Manufacturer'] = man_names[i]
+                d['Quantity'] = quantity[i]
+                d['ManufacturingDate'] = man_date[i]
+                d['ExpiryDate'] = exp_date[i]
+                res.append(d)
+        return jsonify(res)
+
+
+api.add_resource(WholesalerData, '/wholesalerdata')
 
 
 class DrugSearch(Resource):
