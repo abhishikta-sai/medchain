@@ -167,10 +167,5 @@ class SearchMedicines(Resource):
 api.add_resource(SearchMedicines, '/searchMedicines')
 
 
-class Statistics(Resource):
-    def get(self):
-        pass
-
-
 if __name__ == '__main__':
     app.run()
