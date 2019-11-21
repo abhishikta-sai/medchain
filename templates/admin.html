@@ -48,9 +48,9 @@
             <div class="col s12">
                 <label>Manufacturer: </label>
                 <select onchange="getMedicineData()" id="manufacturer-option" class="browser-default">
-                    <option value="0x8Af5da2797D7833d76be446AD05688AF46798EcF">Save-a-life Solutions</option>
-                    <option value="0x8Af5da2797D7833d76be446AD05688AF46798EcF">Pro-Medical Solutions</option>
-                    <option value="0x8106E48AA331876C">Med-Awesome Solutions</option>
+                    <option value="Save-a-life Solutions">Save-a-life Solutions</option>
+                    <option value="Pro-Medical Solutions">Pro-Medical Solutions</option>
+                    <option value="Med-Awesome Solutions">Med-Awesome Solutions</option>
                 </select>
                 <br>
             </div>
@@ -97,7 +97,7 @@
         {
             console.log($('#manufacturer-option').find(":selected").attr('value'))
             $.ajax({
-                url:'/getmandetails',
+                url:'/admin',
                 method:'POST',
                 data:{'manufacturer_option': $('#manufacturer-option').find(":selected").attr('value'),
                       csrfmiddlewaretoken:'{{ csrf_token }}'},
