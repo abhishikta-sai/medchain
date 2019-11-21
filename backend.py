@@ -1,16 +1,17 @@
 from flask import Flask,jsonify,request
-import json
-import re
 import requests 
-import hashlib
-import os
 from web3 import Web3
 import json
 import time
+import pandas
 
 url = "http://localhost:8545"
 web3  = Web3(Web3.HTTPProvider(url))
 mnf_json = []
+hc = dict()
+hc["Save-a-life Solutions"] = 0
+hc["Pro-Medical Solutions"] = 1
+hc["Med-Awesome Solutions"] = 2
 with open("build/contracts/Admin.json") as f:
     admin_json = json.load(f)
 
@@ -41,6 +42,16 @@ admin = web3.eth.contract(address=Admin_address, abi=admin_json['abi'])
 ws = web3.eth.contract(address=ws_address, abi=ws_json['abi'])
 
 app = Flask(__name__)
+
+def addfromcsv_to_bc():
+    df = pandas.read_csv("./Data/data.csv")
+    for row in df.itertuples():
+        tx_hash = mnf[int(hc[str(row.Manufacturer)])].functions.addMedicineRecord(str(row.Manufacturer),int(row._6),int(row.Quantity),str(row.Name),str(row._4),str(row._5)).transact()
+        tx_hash2 = web3.eth.waitForTransactionReceipt(tx_hash)
+
+#addfromcsv_to_bc()
+
+#print(admin.functions.recordCount().call())
 
 @app.route("/manaddmedicines" , methods=['POST'])
 def addmedicines():

@@ -1473,10 +1473,16 @@
       "links": {},
       "address": "0x786c2b279EA224fD4e328E49D6dFfDd129Ec2B49",
       "transactionHash": "0x004e1f877d2170d4cb81806d378b2f8019c0700d88aec3aa0bc80b891a9626ea"
+    },
+    "1574362859823": {
+      "events": {},
+      "links": {},
+      "address": "0x786c2b279EA224fD4e328E49D6dFfDd129Ec2B49",
+      "transactionHash": "0x004e1f877d2170d4cb81806d378b2f8019c0700d88aec3aa0bc80b891a9626ea"
     }
   },
   "schemaVersion": "3.0.19",
-  "updatedAt": "2019-11-21T18:02:29.517Z",
+  "updatedAt": "2019-11-21T19:01:38.948Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}
