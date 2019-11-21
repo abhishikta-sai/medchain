@@ -10,6 +10,13 @@ app.secret_key = 'this is the end'
 api = Api(app)
 url = 'http://127.0.0.1:8000'
 
+hc = dict()
+hc["Save-a-life Solutions"] = 0
+hc["Pro-Medical Solutions"] = 1
+hc["Med-Awesome Solutions"] = 2
+
+
+
 client = MongoClient('localhost', 27017)
 db = client.medchain
 
@@ -39,7 +46,7 @@ class Manufacturer(Resource):
         return make_response(render_template('manufacturer.html')) 
     def post(self):
         print("hi")
-        x = {'man_name': request.form['man_name'], 'med_id': request.form['med_id'], 'med_name': request.form['med_name'], 'quantity': request.form['quantity'], 'man_date': datetime.strftime(request.form['man_date']), 'exp_date': datetime.strftime(request.form['exp_date'])}
+        x = {'man_id':hc[request.form['man_name']],'man_name': request.form['man_name'], 'med_id': request.form['med_id'], 'med_name': request.form['med_name'], 'quantity': request.form['quantity'], 'man_date': datetime.strftime(request.form['man_date']), 'exp_date': datetime.strftime(request.form['exp_date'])}
         res = requests.post(url + '/manaddmedicines', data=x)
         print(res['hash'])
         return make_response("hello")
@@ -53,7 +60,8 @@ class WholesalerPage(Resource):
     def get(self):
         return make_response(render_template('wholesaler.html'))
     def post(self):
-        x = {'man_name': request.form['man_name'],
+        x = {'man_id':hc[request.form['man_name']],
+             'man_name': request.form['man_name'],
              'med_name': request.form['med_name'],
              'med_id': request.form['med_id'],
              'quantity': request.form['quantity'],
