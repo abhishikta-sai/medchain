@@ -1,4 +1,4 @@
-from flask import Flask,jsonify
+from flask import Flask,jsonify,request
 import json
 import re
 import requests 
@@ -6,6 +6,7 @@ import hashlib
 import os
 from web3 import Web3
 import json
+import time
 
 url = "http://localhost:8545"
 web3  = Web3(Web3.HTTPProvider(url))
@@ -40,21 +41,34 @@ def addmedicines():
     try:
         records = request.get_json()
         tx_hash = mnf.functions.addMedicineRecord(records['med_id'],records['quantity'],records['med_name'],records["man_date"],records["exp_date"]).transact()
-
-        batch_no = web3.eth.waitForTransactionReceipt(tx_hash)
-        return json.dumps([batch_no]),200
+        tx_hash2 = web3.eth.waitForTransactionReceipt(tx_hash)
+        batch_no = admin.functions.batch_no().call()
+        return jsonify({'hash':tx_hash,'batch_no':batch_no}),200
     except:
         return "error",500
 
 @app.route("/admin/getmandetails" , methods=['POST'])
 def getmandetails():
-    try:
-        man_address = request.get_json()
-        tx_hash = admin.functions.sendManDetails(man_address).transact()
-        records = web3.eth.waitForTransactionReceipt(tx_hash)
-        return json.dumps(records),200
-    except:
-        return "error",500
+    recordCount = admin.functions.recordCount().call()
+    comp_record = dict()
+    j = 0
+    man_address = eval(request.data)[0]
+    for i in range(0,recordCount):
+        x = admin.functions.records(i).call()
+        if(x[1]==man_address):
+            temp_rec = dict()
+
+            temp_rec['man_address'] = x[1]
+            temp_rec['med_id'] = x[2]
+            temp_rec['quantity'] = x[3]
+            temp_rec['batch_no'] = str(x[4])
+            temp_rec['med_name'] = x[7]
+            temp_rec['pkd_date'] = x[8]
+            temp_rec['exp_date'] = x[9]
+            comp_record[str(j)] = temp_rec
+            print(type(x[4]))
+            j = j+1
+    return jsonify(comp_record),200
 
 if __name__ == '__main__':
-	app.run(host="127.0.0.1" ,port=5000, debug = True)
+	app.run(host="127.0.0.1" ,port=8000, debug = True)
