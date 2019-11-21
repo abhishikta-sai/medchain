@@ -2,6 +2,9 @@ from flask import Flask, render_template, flash, request, session, redirect, url
 from flask_restful import Resource, Api
 import requests
 import json
+from forms import *
+
+import spacy
 from pymongo import MongoClient
 from datetime import datetime
 
@@ -21,6 +24,7 @@ client = MongoClient('localhost', 27017)
 db = client.medchain
 
 data_collection = db.data
+collection = db.drugs
 
 
 class Index(Resource):
@@ -108,8 +112,65 @@ class DrugSearch(Resource):
                     res['Med-Awesome Solutions'] += quantity[i]
         return jsonify(res)
 
-        
+
 api.add_resource(DrugSearch, '/drugsearch')
-    
+
+
+class SearchFieldView(Resource):
+    def get(self):
+        form = SearchForm()
+        return make_response(render_template('search.html'))
+
+
+api.add_resource(SearchFieldView, '/search')
+
+
+class SearchResultPage(Resource):
+    def get(self):
+        search_request = request.args.get("search_field")
+        session["search_query"] = search_request
+        print(session["search_query"])
+        return make_response(render_template('results.html', result={"search_query": session["search_query"]}))
+
+
+api.add_resource(SearchResultPage, '/searchresultpage')
+
+nlp = spacy.load("en_core_web_md")
+
+
+class SearchMedicines(Resource):
+    global nlp
+    api_name = "Search Company api"
+    tag_objects = []
+    names = []
+    summaries = []
+    categories = []
+    for item in collection.find():
+        names.append(item["Name"])
+        summaries.append(item["Summary"])
+        tag_objects.append(nlp(" ".join(item["Tags"].split(","))))
+
+    def get(self):
+        search_request_object = nlp(request.args.get("search_field"))
+        similarities = []
+        for i in range(len(self.tag_objects)):
+            similarities.append([self.names[i].replace(u'\u2013', '-'), self.summaries[i].replace(u'\u2013', '-'),
+                                 self.tag_objects[i].similarity(search_request_object)])
+        similarities.sort(key=lambda x: x[2], reverse=True)
+        similarities = similarities[0:5]
+        session["search_results"] = similarities
+        return jsonify(
+            search_results=similarities
+        )
+
+
+api.add_resource(SearchMedicines, '/searchMedicines')
+
+
+class Statistics(Resource):
+    def get(self):
+        pass
+
+
 if __name__ == '__main__':
     app.run()
