@@ -76,7 +76,7 @@ contract Admin{
     function getnumberofWholsaleDealers(uint _med_id) external view returns(uint){
         uint num=0;
         for(uint i=1;i<=recordCount;i++){
-            if(records[i].licenseMan == 0)
+            if(records[i].licenseWhole != 0 && records[i].med_id == _med_id)
             num=num+1;
         }
         return num;
@@ -93,14 +93,15 @@ contract Admin{
 
 
 contract Manufacture{
-    string public medicines;
     address public Owner;
     address Adminaddress;
-    uint license;
+    address public using_address;
+    bytes32 public batchNo;
+    uint public license;
     constructor(address _admin,uint _licenseMan) public {
-        medicines = "Paracetamol";
         Adminaddress = _admin;
         Owner = msg.sender;
+        using_address = address(this);
         license = _licenseMan;
     }
     modifier onlyOwner() {
@@ -108,14 +109,15 @@ contract Manufacture{
         _;
     }
 
-    function addMedicineRecord(uint _med_id,uint _quantity,string memory _medName,string memory _manDate,string memory _expDate) public onlyOwner{
+    function addMedicineRecord(uint _med_id,uint _quantity,string memory _medName,string memory _manDate,string memory _expDate) public onlyOwner returns(bytes32){
     Admin adminConnect = Admin(Adminaddress);
-    bytes32 batchNo = adminConnect.addManufactureRecord(msg.sender,_med_id,_quantity,license,0,_medName,_manDate,_expDate);
+    batchNo = adminConnect.addManufactureRecord(using_address,_med_id,_quantity,license,0,_medName,_manDate,_expDate);
+    return batchNo;
     }
     
     function sellMedicine (address _wholesaler, uint _med_id, uint _quantity, uint _license) external returns(bytes32){
         Admin adminConnect = Admin (Adminaddress);
-        return adminConnect.WholesalerTransaction(Owner,_wholesaler,_med_id,_quantity,_license);
+        return adminConnect.WholesalerTransaction(using_address,_wholesaler,_med_id,_quantity,_license);
         
     }
     
@@ -126,6 +128,7 @@ contract Wholesaler{
     string public medicines;
     address public Owner;
     address Adminaddress;
+    bool public done;
     uint license;
     constructor(address _admin, uint _license) public{
         medicines = "Paracetamol";
@@ -137,14 +140,14 @@ contract Wholesaler{
         require(msg.sender == Owner, "Only owner can call this function");
         _;
     }
-    function validate(uint _med_id,bytes32 _batchNo) private {
+    function validate(uint _med_id,bytes32 _batchNo) private returns (bool) {
         Admin adm = Admin(Adminaddress);
-        require(adm.validate(msg.sender,_med_id,_batchNo),"Unsuccessfull Transaction");
+        return adm.validate(msg.sender,_med_id,_batchNo);
     }
     function buyMedicine (address _manufacturer , uint _med_id,uint _quantity) public onlyOwner{
         Manufacture Man = Manufacture(_manufacturer);
         bytes32 hashedaccess = Man.sellMedicine(msg.sender,_med_id,_quantity,license);
-        validate(_med_id,hashedaccess);
+        done = validate(_med_id,hashedaccess);
     }
 }
 

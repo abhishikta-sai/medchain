@@ -50,16 +50,16 @@
         </div>
         
         <div class="row">
-            <h3>Validate Medicine</h3>
-            <form>
-                Medicine Name: <input type="text"><br>
-                Medicine ID : <input type="text"><br>
-                License: <input type="text"><br>
-                Quantity: <input type="text" name=""><br>
+            <h3> Validate Medicine</h3>
+            <form action="/manufacturer" method="POST">
+                Medicine Name: <input name="med_name" type="text"><br>
+                Medicine ID: <input name="med_id" type="text"><br>
+                Quantity: <input name="quantity" type="text"><br>
+                Mfg. Date: <input name="man_date" type="text"><br>
                 <input type="submit" value="Request">
             </form>
         </div>
-        <p> Batch ID for your request is: LMN</p>
+        <p>Transaction Hash: LMN</p>
     </div>
 </body>
 
