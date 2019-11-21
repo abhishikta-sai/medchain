@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<br><br><br><br>
+<div class="container">
+    <h2>Top Results for <b> "{{result.search_query}}" </b></h2>
+    <script type="text/javascript">
+        console.log("Hello world")
+        console.log("{{result.search_query}}")
+    </script>
+  <ul class="list-group">
+      {% for item in result.search_results %}
+    <li class="list-group-item list-group-item-success">
+        <div>
+            <h2> {{item.0}} </h2> <h4>&emsp;</h4>    <br>
+            {{item.1}}
+        </div>
+    </li>
+      {% endfor %}
+  </ul>
+</div>
+
+</body>
+</html>
