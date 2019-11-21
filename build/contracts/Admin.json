@@ -21519,10 +21519,17 @@
       "links": {},
       "address": "0x7ef506Ae6A7BB45E2FC2878a7a18bc56eaB7Dbd8",
       "transactionHash": "0x9faf25c6f4e70d8fcde279f7e95f72b5e9884b5227749d02ec5d039ef68f3396"
+    },
+    "1574329953094": {
+      "events": {},
+      "links": {},
+      "address": "0x7ef506Ae6A7BB45E2FC2878a7a18bc56eaB7Dbd8",
+      "transactionHash": "0x9faf25c6f4e70d8fcde279f7e95f72b5e9884b5227749d02ec5d039ef68f3396"
     }
   },
   "schemaVersion": "3.0.19",
-  "updatedAt": "2019-11-21T06:57:02.907Z",
+  "updatedAt": "2019-11-21T09:53:21.242Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {}
   },

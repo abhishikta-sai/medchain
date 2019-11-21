@@ -23,16 +23,20 @@ api.add_resource(Admin, '/admin')
 class GetManDetails(Resource):
     def post(self):
         res = requests.post(url + '/admin/getmandetails', json.dumps([request.form.get('manufacturer_option')]))
-        print(res)
-        return res
+        return make_response("hello")
 
 api.add_resource(GetManDetails, '/getmandetails')
 
 class Manufacturer(Resource):
     def get(self):
         return make_response(render_template('manufacturer.html')) 
-    # def post(self):
-    #     request.post(url + '/manaddmedicine', {'man_id': ,'med_id': ,'quantity': ,'med_name': ,'man_date': ,'exp_date': })
+    def post(self):
+        print("hi")
+        print(request.form['med_id'])
+        x = {'med_id': request.form['med_id'],'med_name': request.form['med_name'],'quantity': request.form['quantity'],'man_date': request.form['man_date'],'exp_date':"123"}
+        print(x)
+        res = requests.post(url + '/manaddmedicines', data=x)
+        print(res)
         # returns a Batch Number
 
 api.add_resource(Manufacturer, '/manufacturer')
