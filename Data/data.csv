@@ -1,101 +1,101 @@
-Name,Quantity,Manufacturer,Manufacturing Date,Expiry Date,Medicine ID
-Lisinopril,61,Med-Awesome Solutions,2019-04-28 01:21:17,2023-04-28 01:21:17,1
-Pantoprazole,62,Med-Awesome Solutions,2019-08-05 00:24:00,2023-08-05 00:24:00,2
-Amoxicillin,31,Med-Awesome Solutions,2018-04-09 12:36:54,2022-04-09 12:36:54,3
-Losartan,44,Med-Awesome Solutions,2018-10-01 07:13:16,2022-10-01 07:13:16,4
-Ativan,85,Save-a-life Solutions,2018-11-19 10:24:13,2022-11-19 10:24:13,5
-Atorvastatin,22,Save-a-life Solutions,2019-07-08 09:50:09,2023-07-08 09:50:09,6
-Trazodone,58,Med-Awesome Solutions,2018-05-28 04:03:25,2022-05-28 04:03:25,7
-Ciprofloxacin,69,Pro-Medical Solutions,2018-08-03 08:19:31,2022-08-03 08:19:31,8
-Wellbutrin,35,Med-Awesome Solutions,2019-12-06 05:53:53,2023-12-06 05:53:53,9
-Lexapro,76,Pro-Medical Solutions,2019-03-09 22:36:16,2023-03-09 22:36:16,10
-Acetaminophen,8,Save-a-life Solutions,2019-10-01 02:26:52,2023-10-01 02:26:52,11
-Viagra,95,Pro-Medical Solutions,2018-04-23 18:50:55,2022-04-23 18:50:55,12
-Metoprolol,65,Save-a-life Solutions,2018-09-29 15:18:28,2022-09-29 15:18:28,13
-Metformin,99,Med-Awesome Solutions,2019-09-27 16:30:14,2023-09-27 16:30:14,14
-Cyclobenzaprine,54,Med-Awesome Solutions,2019-01-28 06:59:54,2023-01-28 06:59:54,15
-Amitriptyline,4,Pro-Medical Solutions,2019-04-28 11:07:19,2023-04-28 11:07:19,16
-Meloxicam,18,Med-Awesome Solutions,2018-12-25 08:50:47,2022-12-25 08:50:47,17
-Lorazepam,81,Save-a-life Solutions,2018-08-04 10:46:34,2022-08-04 10:46:34,18
-Alprazolam,20,Pro-Medical Solutions,2018-07-05 11:42:29,2022-07-05 11:42:29,19
-Metoprolol,17,Save-a-life Solutions,2018-11-10 12:14:19,2022-11-10 12:14:19,20
-Cymbalta,88,Save-a-life Solutions,2018-04-26 06:09:51,2022-04-26 06:09:51,21
-Codeine,93,Save-a-life Solutions,2019-08-31 21:47:40,2023-08-31 21:47:40,22
-Meloxicam,61,Med-Awesome Solutions,2018-06-13 06:31:34,2022-06-13 06:31:34,23
-Doxycycline,91,Pro-Medical Solutions,2019-11-04 08:59:36,2023-11-04 08:59:36,24
-Amoxicillin,50,Pro-Medical Solutions,2019-12-27 00:23:36,2023-12-27 00:23:36,25
-Ativan,73,Save-a-life Solutions,2019-05-04 03:35:04,2023-05-04 03:35:04,26
-Citalopram,25,Pro-Medical Solutions,2019-03-06 00:39:26,2023-03-06 00:39:26,27
-Tramadol,69,Med-Awesome Solutions,2018-10-22 14:51:26,2022-10-22 14:51:26,28
-Cyclobenzaprine,13,Pro-Medical Solutions,2018-08-21 19:44:11,2022-08-21 19:44:11,29
-Cyclobenzaprine,74,Pro-Medical Solutions,2018-05-17 11:14:13,2022-05-17 11:14:13,30
-Tramadol,45,Med-Awesome Solutions,2018-11-01 11:52:04,2022-11-01 11:52:04,31
-Atorvastatin,10,Med-Awesome Solutions,2018-09-21 17:57:59,2022-09-21 17:57:59,32
-Wellbutrin,71,Save-a-life Solutions,2019-09-26 21:46:16,2023-09-26 21:46:16,33
-Lorazepam,33,Pro-Medical Solutions,2018-06-27 02:48:55,2022-06-27 02:48:55,34
-Clindamycin,89,Pro-Medical Solutions,2019-07-23 11:27:09,2023-07-23 11:27:09,35
-Cymbalta,19,Med-Awesome Solutions,2019-10-24 21:53:16,2023-10-24 21:53:16,36
-Xanax,40,Med-Awesome Solutions,2019-08-22 04:22:59,2023-08-22 04:22:59,37
-Loratadine,70,Save-a-life Solutions,2019-12-06 07:20:27,2023-12-06 07:20:27,38
-Tramadol,25,Save-a-life Solutions,2018-12-25 22:04:20,2022-12-25 22:04:20,39
-Wellbutrin,47,Med-Awesome Solutions,2018-02-23 05:18:38,2022-02-23 05:18:38,40
-Alprazolam,12,Save-a-life Solutions,2018-12-02 01:36:48,2022-12-02 01:36:48,41
-Meloxicam,22,Med-Awesome Solutions,2019-04-07 13:11:42,2023-04-07 13:11:42,42
-Naproxen,80,Save-a-life Solutions,2019-12-16 14:14:01,2023-12-16 14:14:01,43
-Cyclobenzaprine,70,Save-a-life Solutions,2019-03-21 09:32:31,2023-03-21 09:32:31,44
-Losartan,21,Save-a-life Solutions,2018-08-13 09:47:42,2022-08-13 09:47:42,45
-Tramadol,78,Med-Awesome Solutions,2019-06-05 17:46:09,2023-06-05 17:46:09,46
-Citalopram,34,Med-Awesome Solutions,2018-06-21 11:46:13,2022-06-21 11:46:13,47
-Lyrica,79,Save-a-life Solutions,2019-07-21 13:54:17,2023-07-21 13:54:17,48
-Cyclobenzaprine,16,Pro-Medical Solutions,2019-10-17 06:52:45,2023-10-17 06:52:45,49
-Lisinopril,47,Pro-Medical Solutions,2018-03-17 02:26:56,2022-03-17 02:26:56,50
-Tramadol,49,Save-a-life Solutions,2019-10-26 13:48:30,2023-10-26 13:48:30,51
-Ciprofloxacin,95,Save-a-life Solutions,2018-10-22 10:34:39,2022-10-22 10:34:39,52
-Cymbalta,73,Save-a-life Solutions,2018-11-07 14:09:02,2022-11-07 14:09:02,53
-Amoxicillin,69,Save-a-life Solutions,2019-09-11 03:06:21,2023-09-11 03:06:21,54
-Lexapro,83,Save-a-life Solutions,2019-04-08 00:30:46,2023-04-08 00:30:46,55
-Prednisone,63,Pro-Medical Solutions,2019-01-08 14:01:03,2023-01-08 14:01:03,56
-Doxycycline,34,Pro-Medical Solutions,2019-12-01 22:56:38,2023-12-01 22:56:38,57
-Zoloft,92,Med-Awesome Solutions,2019-09-07 01:35:37,2023-09-07 01:35:37,58
-Metformin,57,Med-Awesome Solutions,2019-11-05 16:03:13,2023-11-05 16:03:13,59
-Alprazolam,17,Pro-Medical Solutions,2018-04-02 22:28:51,2022-04-02 22:28:51,60
-Clonazepam,58,Save-a-life Solutions,2018-02-06 13:55:10,2022-02-06 13:55:10,61
-Viagra,90,Med-Awesome Solutions,2018-09-26 12:36:29,2022-09-26 12:36:29,62
-Amitriptyline,20,Pro-Medical Solutions,2018-11-24 03:02:18,2022-11-24 03:02:18,63
-Amitriptyline,78,Save-a-life Solutions,2018-01-10 14:26:12,2022-01-10 14:26:12,64
-Doxycycline,15,Med-Awesome Solutions,2018-11-14 14:55:56,2022-11-14 14:55:56,65
-Clonazepam,76,Pro-Medical Solutions,2018-04-01 15:53:06,2022-04-01 15:53:06,66
-Wellbutrin,52,Save-a-life Solutions,2018-02-17 08:34:29,2022-02-17 08:34:29,67
-Ibuprofen,27,Save-a-life Solutions,2018-12-03 23:55:55,2022-12-03 23:55:55,68
-Hydrochlorothiazide,96,Pro-Medical Solutions,2018-07-31 06:42:54,2022-07-31 06:42:54,69
-Azithromycin,80,Save-a-life Solutions,2019-04-22 06:53:28,2023-04-22 06:53:28,70
-Ibuprofen,96,Med-Awesome Solutions,2019-09-30 14:42:03,2023-09-30 14:42:03,71
-Ciprofloxacin,71,Pro-Medical Solutions,2018-07-14 05:24:49,2022-07-14 05:24:49,72
-Losartan,86,Save-a-life Solutions,2019-05-06 03:51:44,2023-05-06 03:51:44,73
-Amitriptyline,53,Med-Awesome Solutions,2018-03-16 23:30:32,2022-03-16 23:30:32,74
-Xanax,7,Med-Awesome Solutions,2018-07-28 21:34:06,2022-07-28 21:34:06,75
-Codeine,41,Save-a-life Solutions,2018-10-29 08:19:15,2022-10-29 08:19:15,76
-Azithromycin,30,Med-Awesome Solutions,2018-10-23 01:08:34,2022-10-23 01:08:34,77
-Atorvastatin,37,Save-a-life Solutions,2018-10-15 15:51:39,2022-10-15 15:51:39,78
-Meloxicam,65,Pro-Medical Solutions,2018-01-29 01:12:34,2022-01-29 01:12:34,79
-Lorazepam,2,Med-Awesome Solutions,2018-01-23 16:29:26,2022-01-23 16:29:26,80
-Amlodipine,12,Med-Awesome Solutions,2019-03-28 19:17:52,2023-03-28 19:17:52,81
-Amlodipine,61,Save-a-life Solutions,2018-05-01 08:07:37,2022-05-01 08:07:37,82
-Zoloft,52,Save-a-life Solutions,2019-08-16 06:42:28,2023-08-16 06:42:28,83
-Clindamycin,98,Save-a-life Solutions,2018-01-08 09:43:21,2022-01-08 09:43:21,84
-Tramadol,9,Pro-Medical Solutions,2019-04-13 01:43:30,2023-04-13 01:43:30,85
-Alprazolam,49,Pro-Medical Solutions,2018-04-12 07:34:47,2022-04-12 07:34:47,86
-Doxycycline,84,Med-Awesome Solutions,2019-06-06 14:11:27,2023-06-06 14:11:27,87
-Prednisone,68,Pro-Medical Solutions,2018-03-09 20:14:16,2022-03-09 20:14:16,88
-Lisinopril,63,Med-Awesome Solutions,2018-12-11 00:58:35,2022-12-11 00:58:35,89
-Oxycodone,76,Pro-Medical Solutions,2019-11-29 03:00:30,2023-11-29 03:00:30,90
-Zoloft,86,Save-a-life Solutions,2018-08-26 19:46:40,2022-08-26 19:46:40,91
-Meloxicam,19,Pro-Medical Solutions,2019-12-15 09:23:57,2023-12-15 09:23:57,92
-Trazodone,30,Save-a-life Solutions,2018-04-29 19:57:37,2022-04-29 19:57:37,93
-Alprazolam,12,Pro-Medical Solutions,2018-04-26 09:24:16,2022-04-26 09:24:16,94
-Zoloft,64,Pro-Medical Solutions,2018-01-25 04:15:57,2022-01-25 04:15:57,95
-Clonazepam,66,Pro-Medical Solutions,2018-09-27 14:23:51,2022-09-27 14:23:51,96
-Xanax,40,Med-Awesome Solutions,2018-03-23 03:24:01,2022-03-23 03:24:01,97
-Trazodone,54,Pro-Medical Solutions,2019-12-11 00:00:56,2023-12-11 00:00:56,98
-Clonazepam,22,Med-Awesome Solutions,2019-03-27 08:42:35,2023-03-27 08:42:35,99
-Hydrochlorothiazide,94,Pro-Medical Solutions,2018-08-01 18:02:20,2022-08-01 18:02:20,100
+Name,Quantity,Manufacturer,Manufacturing Date,Expiry Date
+Lexapro,89,Med-Awesome Solutions,2019-12-10,2023-12-10
+Adderall,91,Save-a-life Solutions,2018-10-22,2022-10-22
+Doxycycline,74,Save-a-life Solutions,2019-12-14,2023-12-14
+Losartan,8,Save-a-life Solutions,2019-02-16,2023-02-16
+Clindamycin,40,Save-a-life Solutions,2019-02-12,2023-02-12
+Pantoprazole,13,Med-Awesome Solutions,2018-05-15,2022-05-15
+Alprazolam,90,Med-Awesome Solutions,2019-04-06,2023-04-06
+Adderall,74,Pro-Medical Solutions,2018-10-20,2022-10-20
+Losartan,10,Pro-Medical Solutions,2018-01-04,2022-01-04
+Lexapro,54,Med-Awesome Solutions,2018-05-17,2022-05-17
+Clonazepam,1,Med-Awesome Solutions,2018-09-24,2022-09-24
+Prednisone,54,Med-Awesome Solutions,2019-06-26,2023-06-26
+Pantoprazole,24,Pro-Medical Solutions,2019-12-23,2023-12-23
+Metoprolol,25,Save-a-life Solutions,2019-06-08,2023-06-08
+Omeprazole,69,Pro-Medical Solutions,2019-01-29,2023-01-29
+Trazodone,23,Pro-Medical Solutions,2018-07-20,2022-07-20
+Clonazepam,99,Pro-Medical Solutions,2018-04-26,2022-04-26
+Clindamycin,96,Med-Awesome Solutions,2019-07-11,2023-07-11
+Wellbutrin,65,Save-a-life Solutions,2019-05-22,2023-05-22
+Gabapentin,95,Save-a-life Solutions,2018-09-06,2022-09-06
+Prednisone,72,Pro-Medical Solutions,2018-04-28,2022-04-28
+Zoloft,12,Med-Awesome Solutions,2018-09-29,2022-09-29
+Naproxen,50,Pro-Medical Solutions,2019-12-18,2023-12-18
+Meloxicam,69,Save-a-life Solutions,2019-12-21,2023-12-21
+Cymbalta,87,Med-Awesome Solutions,2018-01-14,2022-01-14
+Trazodone,91,Med-Awesome Solutions,2018-08-20,2022-08-20
+Atorvastatin,0,Med-Awesome Solutions,2019-03-23,2023-03-23
+Clonazepam,93,Med-Awesome Solutions,2018-07-25,2022-07-25
+Lyrica,91,Med-Awesome Solutions,2018-03-14,2022-03-14
+Cymbalta,34,Save-a-life Solutions,2018-08-15,2022-08-15
+Lorazepam,18,Save-a-life Solutions,2018-06-05,2022-06-05
+Hydrochlorothiazide,7,Med-Awesome Solutions,2019-01-01,2023-01-01
+Azithromycin,34,Pro-Medical Solutions,2019-12-07,2023-12-07
+Naproxen,70,Med-Awesome Solutions,2018-06-09,2022-06-09
+Citalopram,99,Save-a-life Solutions,2018-08-21,2022-08-21
+Cymbalta,18,Pro-Medical Solutions,2019-01-18,2023-01-18
+Lisinopril,81,Med-Awesome Solutions,2019-12-15,2023-12-15
+Metoprolol,32,Pro-Medical Solutions,2019-11-13,2023-11-13
+Pantoprazole,54,Pro-Medical Solutions,2019-01-07,2023-01-07
+Cyclobenzaprine,58,Med-Awesome Solutions,2019-11-06,2023-11-06
+Xanax,81,Pro-Medical Solutions,2019-06-18,2023-06-18
+Cyclobenzaprine,56,Pro-Medical Solutions,2019-04-14,2023-04-14
+Amitriptyline,95,Med-Awesome Solutions,2018-09-24,2022-09-24
+Meloxicam,88,Save-a-life Solutions,2018-06-06,2022-06-06
+Lisinopril,90,Pro-Medical Solutions,2018-10-10,2022-10-10
+Meloxicam,41,Pro-Medical Solutions,2018-01-31,2022-01-31
+Metoprolol,95,Save-a-life Solutions,2019-08-16,2023-08-16
+Amitriptyline,8,Med-Awesome Solutions,2018-05-05,2022-05-05
+Zoloft,41,Pro-Medical Solutions,2019-09-12,2023-09-12
+Lyrica,25,Pro-Medical Solutions,2018-07-20,2022-07-20
+Oxycodone,9,Save-a-life Solutions,2019-12-11,2023-12-11
+Losartan,16,Pro-Medical Solutions,2019-05-05,2023-05-05
+Atorvastatin,98,Pro-Medical Solutions,2019-10-04,2023-10-04
+Adderall,8,Save-a-life Solutions,2018-06-19,2022-06-19
+Lorazepam,43,Pro-Medical Solutions,2018-04-21,2022-04-21
+Oxycodone,16,Save-a-life Solutions,2019-01-29,2023-01-29
+Zoloft,69,Med-Awesome Solutions,2018-05-10,2022-05-10
+Adderall,11,Pro-Medical Solutions,2018-07-11,2022-07-11
+Meloxicam,62,Save-a-life Solutions,2018-10-10,2022-10-10
+Prednisone,93,Save-a-life Solutions,2018-05-20,2022-05-20
+Naproxen,42,Save-a-life Solutions,2018-12-18,2022-12-18
+Doxycycline,90,Med-Awesome Solutions,2018-09-17,2022-09-17
+Prednisone,24,Save-a-life Solutions,2019-12-23,2023-12-23
+Ciprofloxacin,93,Save-a-life Solutions,2018-01-10,2022-01-10
+Gabapentin,8,Pro-Medical Solutions,2018-06-26,2022-06-26
+Loratadine,16,Med-Awesome Solutions,2018-05-27,2022-05-27
+Oxycodone,13,Med-Awesome Solutions,2018-03-29,2022-03-29
+Metformin,78,Pro-Medical Solutions,2018-11-27,2022-11-27
+Lexapro,25,Med-Awesome Solutions,2018-05-30,2022-05-30
+Lexapro,31,Save-a-life Solutions,2019-11-21,2023-11-21
+Adderall,19,Pro-Medical Solutions,2019-03-26,2023-03-26
+Amitriptyline,11,Med-Awesome Solutions,2018-08-11,2022-08-11
+Alprazolam,63,Med-Awesome Solutions,2019-06-09,2023-06-09
+Trazodone,76,Med-Awesome Solutions,2019-01-28,2023-01-28
+Zoloft,92,Pro-Medical Solutions,2018-08-03,2022-08-03
+Adderall,12,Pro-Medical Solutions,2018-12-24,2022-12-24
+Azithromycin,15,Pro-Medical Solutions,2018-10-09,2022-10-09
+Lisinopril,33,Med-Awesome Solutions,2018-02-16,2022-02-16
+Oxycodone,7,Med-Awesome Solutions,2018-08-19,2022-08-19
+Codeine,86,Pro-Medical Solutions,2018-05-31,2022-05-31
+Ibuprofen,33,Pro-Medical Solutions,2019-05-26,2023-05-26
+Lorazepam,36,Pro-Medical Solutions,2019-09-25,2023-09-25
+Metformin,75,Pro-Medical Solutions,2019-07-12,2023-07-12
+Meloxicam,64,Save-a-life Solutions,2018-08-30,2022-08-30
+Viagra,14,Save-a-life Solutions,2018-03-09,2022-03-09
+Doxycycline,51,Med-Awesome Solutions,2019-05-01,2023-05-01
+Codeine,24,Med-Awesome Solutions,2019-02-26,2023-02-26
+Doxycycline,7,Pro-Medical Solutions,2018-09-22,2022-09-22
+Citalopram,1,Save-a-life Solutions,2019-12-23,2023-12-23
+Hydrochlorothiazide,73,Save-a-life Solutions,2018-01-29,2022-01-29
+Viagra,35,Save-a-life Solutions,2018-03-22,2022-03-22
+Citalopram,21,Med-Awesome Solutions,2019-12-31,2023-12-31
+Loratadine,93,Save-a-life Solutions,2018-09-13,2022-09-13
+Adderall,16,Med-Awesome Solutions,2019-11-30,2023-11-30
+Loratadine,25,Med-Awesome Solutions,2019-07-28,2023-07-28
+Lyrica,0,Pro-Medical Solutions,2019-07-12,2023-07-12
+Loratadine,39,Med-Awesome Solutions,2019-12-06,2023-12-06
+Tramadol,45,Pro-Medical Solutions,2018-09-18,2022-09-18
+Metformin,31,Med-Awesome Solutions,2019-11-05,2023-11-05
+Metoprolol,48,Pro-Medical Solutions,2019-12-11,2023-12-11
