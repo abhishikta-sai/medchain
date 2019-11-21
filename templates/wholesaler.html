@@ -32,36 +32,17 @@
         <div class="row">
             <div class="col s12">
                 <label>Medicine: </label><br>
-                <select id='medicine-list' style='width: 200px;'>
-                    <option>Crocin</option>
-                    <option>Okacet</option>
-<!--                    Get from mongodb-->
+                <select id='medicine-list' onchange="getMedicineData()" style='width: 200px;'>
                 </select>
             </div>
         </div>
-        
-        <table style="width:100%">
-            <tr>
-                <th>Manufacturer Name</th>
-                <th>Quantity</th>
-                <th>Mfg. Date</th>
-                <th>Expiry Date</th>
-            </tr>
-            <tr>
-                <th>A</th>
-                <td>10</td>
-                <td>09-19</td>
-                <td>08-21</td>
-            </tr>
-            <tr>
-                <td>X</td>
-                <td>10</td>
-                <td>07-19</td>
-                <td>06-21</td>
-            </tr>
-        </table>
-        <div class="row">
-            <h3> Buy Medicine</h3>
+
+        <div id="medicine-holder" style="display:none">
+            <table id="medicine-details">
+            </table>
+        </div>
+        <div class="row" id="buy-medicine" style="display:none">
+            <h3>Buy Medicine</h3>
             <form action="/wholesaler" method="POST">
                 Manufacturer Name: <input type="text" name="man_name"><br>
                 Medicine Name: <input type="text" name="med_name"><br>
@@ -70,13 +51,72 @@
                 <input type="submit" value="Send Request">
             </form>
         </div>
-        <p> Request has been successfully placed</p>               
+        <p>Request has been successfully placed</p>
     </div>
 </body>
 <script>
     $(document).ready(function(){
         // Initialize select2
         $("#medicine-list").select2();
+        $.ajax({
+            url:'/wholesalerdata',
+            method:'GET',
+            data:{csrfmiddlewaretoken:'{{ csrf_token }}'},
+            dataType:'json',
+            success:function(data)
+            {
+                medicineNames(data)
+            }
+        })
     });
+    function medicineNames(data)
+    {
+        data = eval(data)
+        for (var key in data)
+        {
+            $('#medicine-list').append($('<option></option>').attr('value',data[key]).text(data[key]));
+        }
+    }
+    function medicineDetails(data)
+    {
+        try
+        {
+            $('#medicine-details').remove();
+        }
+        catch(e)
+        {
+        }
+        $("#medicine-holder").append($("<table></table>").attr("id","medicine-details"))
+        $('#medicine-details').append($("<tr></tr>").attr("id","medicine-header"));
+        $('#medicine-header').append($("<td></td>").text('Manufacturer'));
+        $('#medicine-header').append($("<td></td>").text('Quantity'));
+        $('#medicine-header').append($("<td></td>").text('Mfg. Date'));
+        $('#medicine-header').append($("<td></td>").text('Expiry Date'));
+        for (i = 0;i < data.length;i++)
+        {
+            $('#medicine-details').append($("<tr></tr>").attr("id","medicine-row"+i));
+            $('#medicine-row'+i).append($("<td></td>").text(data[i].Manufacturer));
+            $('#medicine-row'+i).append($("<td></td>").text(data[i].Quantity));
+            $('#medicine-row'+i).append($("<td></td>").text(data[i].ManufacturingDate));
+            $('#medicine-row'+i).append($("<td></td>").text(data[i].ExpiryDate));
+        }
+        $('#medicine-holder').show()
+        $('#buy-medicine').show()
+    }
+    function getMedicineData()
+    {
+        $.ajax({
+            url:'/wholesalerdata',
+            method:'POST',
+            data:{'drug': $('#medicine-list').find(":selected").attr('value'), csrfmiddlewaretoken:'{{ csrf_token }}'},
+            dataType:'json',
+            success:function(data)
+            {
+                console.log(data)
+                medicineDetails(data)
+            }
+        })
+    }
+
 </script>
 </html>
