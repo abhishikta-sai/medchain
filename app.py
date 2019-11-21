@@ -59,17 +59,10 @@ api.add_resource(WholesalerPage, '/wholesaler')
 
 # api.add_resource(WholesalerData, '/wholesalerdata')
 
-class Customer(Resource):
-    def get(self):
-        return make_response(render_template('customer.html'))
-    # def post(self):
-
-api.add_resource(Customer, '/customer')
-
 class DrugSearch(Resource):
     def get(self):
         return make_response(render_template('drugsearch.html'))
-    def post(self):
+    # def post(self):
 
         
 api.add_resource(DrugSearch, '/drugsearch')

@@ -7,7 +7,7 @@ df = pd.read_csv("data.csv")
 print(df.columns)
 
 client = MongoClient('localhost', 27017)
-db = client.sepcs
+db = client.medchain
 # collection = db.data
 # collection.drop()
 collection = db.data
