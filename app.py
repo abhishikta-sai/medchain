@@ -2,11 +2,17 @@ from flask import Flask, render_template, flash, request, session, redirect, url
 from flask_restful import Resource, Api
 import requests
 import json
+from pymongo import MongoClient
 
 app = Flask(__name__)
 app.secret_key = 'this is the end'
 api = Api(app)
 url = 'localhost:8000'
+
+client = MongoClient('localhost', 27017)
+db = client.medchain
+
+data_collection = db.data
 
 class Index(Resource):
     def get(self):
@@ -43,15 +49,15 @@ class WholesalerPage(Resource):
 
 api.add_resource(WholesalerPage, '/wholesaler')
 
-class WholesalerData(Resource):
-    def get(self):
-        request.get(url + '/')
-        return make_response(200)
-    def post(self):
-        request.post(url + '/')
-        return make_response(200)
+# class WholesalerData(Resource):
+#     def get(self):
+#         request.get(url + '/')
+#         return make_response(200)
+#     def post(self):
+#         request.post(url + '/')
+#         return make_response(200)
 
-api.add_resource(WholesalerData, '/wholesalerdata')
+# api.add_resource(WholesalerData, '/wholesalerdata')
 
 class Customer(Resource):
     def get(self):
@@ -60,6 +66,13 @@ class Customer(Resource):
 
 api.add_resource(Customer, '/customer')
 
+class DrugSearch(Resource):
+    def get(self):
+        return make_response(render_template('drugsearch.html'))
+    def post(self):
+
+        
+api.add_resource(DrugSearch, '/drugsearch')
     
 if __name__ == '__main__':
 	app.run()

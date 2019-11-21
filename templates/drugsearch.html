@@ -27,33 +27,16 @@
                 </ul>
             </div>
         </nav>
-        <h2>Admin</h2>
-
-        <div class="row">
-            <div class="col s6">
-                <label>Address: </label>
-                <p id="part-factory-address">0x84C4770F756B1DF9</p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col s6">
-                <label>Valid Licences: </label>
-                <p id="part-factory-address">PHMA000001</p>
-                <p id="part-factory-address">PHMA000002</p>
-                <p id="part-factory-address">PHMA000003</p>
-            </div>
-        </div>
+        <h2>Drug Search</h2>
 
         <div class="row">
             <div class="col s12">
-                <label>Manufacturer: </label>
-                <select onchange="getMedicineData()" id="manufacturer-option" class="browser-default">
-                    <option value="0x8100E20F7560989A">Save-a-life Solutions</option>
-                    <option value="0x81041CA901264982">Pro-Medical Solutions</option>
-                    <option value="0x8106E48AA331876C">Med-Awesome Solutions</option>
-                </select>
-                <br>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="text" id="autocomplete-input" class="autocomplete">
+                        <label for="autocomplete-input">Search for any drug</label>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -77,12 +60,14 @@
             $("#medicine-holder").append($("<table></table>").attr("id","medicine-details"))
             $('#medicine-details').append($("<tr></tr>").attr("id","medicine-header"));
             $('#medicine-header').append($("<td></td>").text('Medicine ID'));
+            $('#medicine-header').append($("<td></td>").text('Manufacturer'));
             $('#medicine-header').append($("<td></td>").text('Medicine Name'));
             $('#medicine-header').append($("<td></td>").text('Quantity'));
             $('#medicine-header').append($("<td></td>").text('Mfg. Date'));
             $('#medicine-header').append($("<td></td>").text('Expiry Before'));
             $('#medicine-details').append($("<tr></tr>").attr("id","medicine-row"));
             $('#medicine-row').append($("<td></td>").text('CET598'));
+            $('#medicine-row').append($("<td></td>").text('Med Awesome Solutions'));
             $('#medicine-row').append($("<td></td>").text('Okacet'));
             $('#medicine-row').append($("<td></td>").text('10'));
             $('#medicine-row').append($("<td></td>").text('07-19'));
@@ -98,7 +83,7 @@
         {
             console.log($('#manufacturer-option').find(":selected").attr('value'))
             $.ajax({
-                url:'/getmandetails',
+                url:'/drugsearch',
                 method:'POST',
                 data:{'manufacturer_option': $('#manufacturer-option').find(":selected").attr('value'),
                       csrfmiddlewaretoken:'{{ csrf_token }}'},
