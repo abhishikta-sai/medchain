@@ -78,7 +78,7 @@ def getmandetails():
 @app.route("/wsbuymedicines" , methods=['POST'])
 def wsbuymedicines():
     records = request.form
-    tx_hash = ws.functions.buyMedicine(int(request.form['man_id']),int(records['med_id']),int(records['quantity'])).transact()
+    tx_hash = ws.functions.buyMedicine(int(request.form['man_id']),str(records['med_name']),int(records['quantity'])).transact()
     tx_hash2 = web3.eth.waitForTransactionReceipt(tx_hash)
     return jsonify({'hash':str(tx_hash)}),200
 
