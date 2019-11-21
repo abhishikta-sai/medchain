@@ -56,6 +56,11 @@ class Customer(Resource):
 
 api.add_resource(Customer, '/customer')
 
+
+class Statistics(Resource):
+    def get(self):
+
+
     
 if __name__ == '__main__':
 	app.run()
