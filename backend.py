@@ -38,14 +38,14 @@ app = Flask(__name__)
 
 @app.route("/manaddmedicines" , methods=['POST'])
 def addmedicines():
-    try:
-        records = request.get_json()
-        tx_hash = mnf.functions.addMedicineRecord(records['med_id'],records['quantity'],records['med_name'],records["man_date"],records["exp_date"]).transact()
-        tx_hash2 = web3.eth.waitForTransactionReceipt(tx_hash)
-        batch_no = admin.functions.batch_no().call()
-        return jsonify({'hash':tx_hash,'batch_no':batch_no}),200
-    except:
-        return "error",500
+    records = request.form
+    tx_hash = mnf.functions.addMedicineRecord(int(records['med_id']),int(records['quantity']),str(records['med_name']),records["man_date"],records["exp_date"]).transact()
+    tx_hash2 = web3.eth.waitForTransactionReceipt(tx_hash)
+    print(tx_hash)
+    #batch_no = admin.functions.batch_no().call()
+    return jsonify({'hash':str(tx_hash)}),200
+    '''except:
+        return "error",500'''
 
 @app.route("/admin/getmandetails" , methods=['POST'])
 def getmandetails():
