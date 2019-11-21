@@ -6,7 +6,7 @@ import json
 app = Flask(__name__)
 app.secret_key = 'this is the end'
 api = Api(app)
-url = 'localhost:8000'
+url = 'http://127.0.0.1:8000'
 
 class Index(Resource):
     def get(self):
@@ -22,7 +22,7 @@ api.add_resource(Admin, '/admin')
 
 class GetManDetails(Resource):
     def post(self):
-        res = requests.post(url + '/admin/getmandetails', request.form.get('manufacturer_option'))
+        res = requests.post(url + '/admin/getmandetails', json.dumps([request.form.get('manufacturer_option')]))
         print(res)
         return res
 
