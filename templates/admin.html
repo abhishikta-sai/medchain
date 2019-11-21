@@ -19,10 +19,10 @@
             <div class="nav-wrapper">
                 <!-- <a href="#" class="brand-logo right">Logo</a> -->
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
-                    <li><a href="admin">Admin</a></li>
-                    <li><a href="manufacturer">Manufacturer</a></li>
-                    <li><a href="wholesaler">Wholesaler</a></li>
-                    <li><a href="customer">Customer</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                    <li><a href="manufacturer.html">Manufacturer</a></li>
+                    <li><a href="wholesaler.html">Wholesaler</a></li>
+                    <li><a href="customer.html">Customer</a></li>
                 </ul>
             </div>
         </nav>
@@ -95,8 +95,9 @@
 
         function getMedicineData()
         {
+            console.log($('#manufacturer-option').find(":selected").attr('value'))
             $.ajax({
-                url:'/admin',
+                url:'/getmandetails',
                 method:'POST',
                 data:{'manufacturer_option': $('#manufacturer-option').find(":selected").attr('value'),
                       csrfmiddlewaretoken:'{{ csrf_token }}'},
