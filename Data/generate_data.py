@@ -26,14 +26,13 @@ rows = []
 
 
 for i in range(100):
-    med_id = i+1
     manufacturing_date = random_state(d1, d2)
     expiry_date = manufacturing_date + relativedelta(years=4)
     drug = random.choice(drugs)
     manufacturer = random.choice(manufacturers)
     quantity = random.choice(range(100))
-    rows.append([drug, quantity, manufacturer, manufacturing_date, expiry_date, med_id])
+    rows.append([drug, quantity, manufacturer, manufacturing_date.date(), expiry_date.date()])
 
 df = pd.DataFrame(rows)
-df.columns = ["Name", "Quantity", "Manufacturer" ,"Manufacturing Date", "Expiry Date", "Medicine ID"]
+df.columns = ["Name", "Quantity", "Manufacturer", "Manufacturing Date", "Expiry Date"]
 df.to_csv("data.csv", index=False)
