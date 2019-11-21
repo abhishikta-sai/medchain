@@ -35,10 +35,15 @@ contract Admin{
 
     function addRecordToTable(address _manufacturer,string memory _man_name, uint _med_id,uint _quantity,uint _licenseMan,bytes32 _batchNo) public{
         require(licenseMans[_licenseMan] == true, "Invalid Manufacture License");
+        hashedaccess = keccak256(abi.encodePacked(_manufacturer,medName));
+        if(getrecids[hashedaccess]==0){
         recordCount += 1;
         records[recordCount] = Record(recordCount,_manufacturer,_man_name,_med_id,_quantity,_batchNo,_licenseMan,medName,manDate,expDate);
-        hashedaccess = keccak256(abi.encodePacked(_manufacturer,_med_id));
-        getrecids[hashedaccess] = recordCount;
+        getrecids[hashedaccess] = recordCount;}
+        else{
+            records[getrecids[hashedaccess]].quantity += _quantity;
+            records[getrecids[hashedaccess]].batchNo = _batchNo;
+        }
     }
 
     function addManufactureRecord(address _manufacturer,string calldata _man_name,uint _med_id,uint _quantity,uint _licenseMan, string calldata _medName,string calldata _manDate,string calldata _expDate) external returns(bytes32){
@@ -50,8 +55,8 @@ contract Admin{
         addRecordToTable(_manufacturer,_man_name,_med_id,_quantity,_licenseMan,batchNo);
         return batchNo;
     }
-    function WholesalerTransaction(address _manufacturer,address _wholesaler,uint _med_id,uint _quantity,uint _license) external returns(bytes32){
-        hashedaccess = keccak256(abi.encodePacked(_manufacturer,_med_id));
+    function WholesalerTransaction(address _manufacturer,address _wholesaler,string calldata _med_name,uint _quantity,uint _license) external returns(bytes32){
+        hashedaccess = keccak256(abi.encodePacked(_manufacturer,_med_name));
         uint test1 = getrecids[hashedaccess];
         uint test = records[test1].quantity;
         require( test >= _quantity,"Medicines are out of stock");
@@ -59,12 +64,12 @@ contract Admin{
         manDate = records[test1].manDate;
         medName = records[test1].medName;
         expDate = records[test1].expDate;
-        addRecordToTable(_wholesaler,"wholesaler",_med_id,_quantity,_license,records[getrecids[hashedaccess]].batchNo);
+        addRecordToTable(_wholesaler,"wholesaler",records[test1].med_id,_quantity,_license,records[getrecids[hashedaccess]].batchNo);
         return records[getrecids[hashedaccess]].batchNo ;
     }
     
-    function validate(address _wholesaler,uint _med_id,bytes32 _batchNo) external returns(bool){
-        hashedaccess = keccak256(abi.encodePacked(_wholesaler,_med_id));
+    function validate(address _wholesaler,string calldata _med_name,bytes32 _batchNo) external returns(bool){
+        hashedaccess = keccak256(abi.encodePacked(_wholesaler,_med_name));
         return records[getrecids[hashedaccess]].batchNo == _batchNo ; 
     }
 }
@@ -93,9 +98,9 @@ contract Manufacture{
     return batchNo;
     }
     
-    function sellMedicine (address _wholesaler, uint _med_id, uint _quantity, uint _license) external returns(bytes32){
+    function sellMedicine (address _wholesaler, string calldata _med_name, uint _quantity, uint _license) external returns(bytes32){
         Admin adminConnect = Admin (Adminaddress);
-        return adminConnect.WholesalerTransaction(using_address,_wholesaler,_med_id,_quantity,_license);
+        return adminConnect.WholesalerTransaction(using_address,_wholesaler,_med_name,_quantity,_license);
         
     }
 }
@@ -123,9 +128,9 @@ contract Manufacture1{
     return batchNo;
     }
     
-    function sellMedicine (address _wholesaler, uint _med_id, uint _quantity, uint _license) external returns(bytes32){
+    function sellMedicine (address _wholesaler, string calldata _med_name, uint _quantity, uint _license) external returns(bytes32){
         Admin adminConnect = Admin (Adminaddress);
-        return adminConnect.WholesalerTransaction(using_address,_wholesaler,_med_id,_quantity,_license);
+        return adminConnect.WholesalerTransaction(using_address,_wholesaler,_med_name,_quantity,_license);
         
     }
 }
@@ -153,9 +158,9 @@ contract Manufacture2{
     return batchNo;
     }
     
-    function sellMedicine (address _wholesaler, uint _med_id, uint _quantity, uint _license) external returns(bytes32){
+    function sellMedicine (address _wholesaler, string calldata _med_name, uint _quantity, uint _license) external returns(bytes32){
         Admin adminConnect = Admin (Adminaddress);
-        return adminConnect.WholesalerTransaction(using_address,_wholesaler,_med_id,_quantity,_license);
+        return adminConnect.WholesalerTransaction(using_address,_wholesaler,_med_name,_quantity,_license);
         
     }
 }
@@ -169,7 +174,6 @@ contract Wholesaler{
     address usingAddress;
     uint license;
     constructor(address _admin,address _man1,address _man2,address _man3, uint _license) public{
-        medicines = "Paracetamol";
         Adminaddress = _admin;
         Owner = msg.sender;
         license = _license;
@@ -183,13 +187,13 @@ contract Wholesaler{
         require(msg.sender == Owner, "Only owner can call this function");
         _;
     }
-    function validate(uint _med_id,bytes32 _batchNo) private returns (bool) {
+    function validate(string memory _med_name,bytes32 _batchNo) private returns (bool) {
         Admin adm = Admin(Adminaddress);
-        return adm.validate(usingAddress,_med_id,_batchNo);
+        return adm.validate(usingAddress,_med_name,_batchNo);
     }
-    function buyMedicine(uint _index, uint _med_id, uint _quantity) public onlyOwner{
+    function buyMedicine(uint _index, string memory _med_name, uint _quantity) public onlyOwner{
         Manufacture Man = Manufacture(man_address[_index]);
-        bytes32 hashedaccess = Man.sellMedicine(usingAddress,_med_id,_quantity,license);
-        done = validate(_med_id,hashedaccess);
+        bytes32 hashedaccess = Man.sellMedicine(usingAddress,_med_name,_quantity,license);
+        done = validate(_med_name,hashedaccess);
     }
 }
