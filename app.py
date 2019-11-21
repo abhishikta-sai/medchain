@@ -3,6 +3,7 @@ from flask_restful import Resource, Api
 import requests
 import json
 from pymongo import MongoClient
+from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = 'this is the end'
@@ -14,42 +15,54 @@ db = client.medchain
 
 data_collection = db.data
 
+
 class Index(Resource):
     def get(self):
         return redirect(url_for('admin'))
 
 api.add_resource(Index, '/')
 
+
 class Admin(Resource):
     def get(self):
         return make_response(render_template('admin.html'))
-        
-api.add_resource(Admin, '/admin')
-
-class GetManDetails(Resource):
     def post(self):
         res = requests.post(url + '/admin/getmandetails', json.dumps([request.form.get('manufacturer_option')]))
         return make_response("hello")
 
-api.add_resource(GetManDetails, '/getmandetails')
+
+api.add_resource(Admin, '/admin')
+
 
 class Manufacturer(Resource):
     def get(self):
         return make_response(render_template('manufacturer.html')) 
     def post(self):
         print("hi")
-        print(request.form['med_id'])
-        x = {'med_id': request.form['med_id'],'med_name': request.form['med_name'],'quantity': request.form['quantity'],'man_date': request.form['man_date'],'exp_date':"123"}
-        print(x)
+        x = {'man_name': request.form['man_name'], 'med_id': request.form['med_id'], 'med_name': request.form['med_name'], 'quantity': request.form['quantity'], 'man_date': datetime.strftime(request.form['man_date']), 'exp_date': datetime.strftime(request.form['exp_date'])}
         res = requests.post(url + '/manaddmedicines', data=x)
-        print(res)
+        print(res['hash'])
+        return make_response("hello")
         # returns a Batch Number
 
+
 api.add_resource(Manufacturer, '/manufacturer')
+
 
 class WholesalerPage(Resource):
     def get(self):
         return make_response(render_template('wholesaler.html'))
+    def post(self):
+        x = {'man_name': request.form['man_name'],
+             'med_name': request.form['med_name'],
+             'med_id': request.form['med_id'],
+             'quantity': request.form['quantity'],
+            }
+        print(x)
+        res = requests.post(url + '/wsbuymedicines', data=x)
+        print(res['hash'])
+        return make_response("hello")
+
 
 api.add_resource(WholesalerPage, '/wholesaler')
 
@@ -62,6 +75,7 @@ api.add_resource(WholesalerPage, '/wholesaler')
 #         return make_response(200)
 
 # api.add_resource(WholesalerData, '/wholesalerdata')
+
 
 class DrugSearch(Resource):
     def get(self):

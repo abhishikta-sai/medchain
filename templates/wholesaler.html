@@ -28,12 +28,6 @@
             </div>
         </nav>
         <h2>Wholesaler</h2>
-        <div class="row">
-            <div class="col s6">
-                <label>Address: </label>
-                <p id="part-factory-address">0x11AB7628AC5D3420</p>
-            </div>
-        </div>
         
         <div class="row">
             <div class="col s12">
@@ -41,25 +35,26 @@
                 <select id='medicine-list' style='width: 200px;'>
                     <option>Crocin</option>
                     <option>Okacet</option>
+<!--                    Get from mongodb-->
                 </select>
             </div>
         </div>
         
         <table style="width:100%">
             <tr>
-                <th>Batch ID</th>
+                <th>Manufacturer Name</th>
                 <th>Quantity</th>
                 <th>Mfg. Date</th>
-                <th>Best Before</th>
+                <th>Expiry Date</th>
             </tr>
             <tr>
-                <td>ABC</td>
+                <th>A</th>
                 <td>10</td>
                 <td>09-19</td>
                 <td>08-21</td>
             </tr>
             <tr>
-                <td>XYZ</td>
+                <td>X</td>
                 <td>10</td>
                 <td>07-19</td>
                 <td>06-21</td>
@@ -67,11 +62,11 @@
         </table>
         <div class="row">
             <h3> Buy Medicine</h3>
-            <form>
-                Medicine Name: <input type="text"><br>
-                Medicine ID : <input type="text"><br>
-                License : <input type="text"><br>
-                Quantity : <input type="text" name=""><br>
+            <form action="/wholesaler" method="POST">
+                Manufacturer Name: <input type="text" name="man_name"><br>
+                Medicine Name: <input type="text" name="med_name"><br>
+                Medicine ID: <input type="text" name="med_id"><br>
+                Quantity: <input type="text" name="quantity"><br>
                 <input type="submit" value="Send Request">
             </form>
         </div>
