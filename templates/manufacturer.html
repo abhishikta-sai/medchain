@@ -45,22 +45,21 @@
         <div class="row" style="display:none" id="med-details">
             <h3> Validate Medicine</h3>
             <form action="/manufacturer" method="POST">
-                Manufacturer Name: <input name="man_name" type="text" id="man-name"><br>
+                Manufacturer Name:<input name="man_name" type="text" id="man-name"><br>
                 Medicine Name: <input name="med_name" type="text"><br>
-                Medicine ID: <input name="med_id" type="text"><br>
                 Quantity: <input name="quantity" type="text"><br>
                 Mfg. Date: <input name="man_date" type="date"><br>
                 Expiry Date: <input name="exp_date" type="date"><br>
-                <input type="submit" value="Request">
+                <input type="submit" value="Request"> 
             </form>
         </div>
-        <p>Transaction Hash: LMN</p>
     </div>
     <script>
         function getMedicineData()
-        {
+        {   
+            document.getElementById("man-name").value = $('#manufacturer-option').find(":selected").attr('value');
+            console.log($('#man-name').attr('value'));
             $('#med-details').show()
-            $('#man-name').attr('value') = $('#manufacturer-option').find(":selected").attr('value')
         }
     </script>
 </body>

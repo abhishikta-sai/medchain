@@ -5,6 +5,6 @@ mydb = myclient["medchain"]
 mycol = mydb["data"]
 
 myquery = {"Name": "Lexapro"}
-newvalues = {"$set": { "Quantity": 100}}
+newvalues = {"$set": { "Quantity": 1000}}
 
 mycol.update_one(myquery, newvalues)

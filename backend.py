@@ -47,10 +47,10 @@ def addfromcsv_to_bc():
         tx_hash = mnf[int(hc[str(row.Manufacturer)])].functions.addMedicineRecord(str(row.Manufacturer),int(0),int(row.Quantity),str(row.Name),str(row._4),str(row._5)).transact()
         tx_hash2 = web3.eth.waitForTransactionReceipt(tx_hash)
 
-#addfromcsv_to_bc()
+if(admin.functions.recordCount().call()<10):
+    addfromcsv_to_bc()
 
 print(admin.functions.recordCount().call())
-
 app = Flask(__name__)
 
 

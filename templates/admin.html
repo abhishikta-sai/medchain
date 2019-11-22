@@ -72,16 +72,15 @@
             $('#medicine-header').append($("<td></td>").text('Quantity'));
             $('#medicine-header').append($("<td></td>").text('Mfg. Date'));
             $('#medicine-header').append($("<td></td>").text('Expiry Before'));
-            $('#medicine-details').append($("<tr></tr>").attr("id","medicine-row"));
+            if(Data!={}){
             for (const key in Data) {
 
-            $('#medicine-details').append($("<tr></tr>").attr("id","medicine-row"));
-            $('#medicine-row').append($("<td></td>").text(Data[key][]));
-            $('#medicine-row').append($("<td></td>").text('Okacet'));
-            $('#medicine-row').append($("<td></td>").text('10'));
-            $('#medicine-row').append($("<td></td>").text('07-19'));
-            $('#medicine-row').append($("<td></td>").text('06-21'));
-            $('#medicine-details').append($("<tr></tr>").attr("id","medicine-row"));
+            $('#medicine-details').append($("<tr></tr>").attr("id","medicine-row"+key));
+            $('#medicine-row'+key).append($("<td></td>").text(Data[key]['med_name']));
+            $('#medicine-row'+key).append($("<td></td>").text(Data[key]['quantity']));
+            $('#medicine-row'+key).append($("<td></td>").text(Data[key]['pkd_date']));
+            $('#medicine-row'+key).append($("<td></td>").text(Data[key]['exp_date']));
+            }
             }
             // for (i = 0;i < json['company_list'].length;i++)
             // {
