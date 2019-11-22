@@ -2,7 +2,7 @@
 
 This project showcases the journey of Medicine on blockchain.
 
-The Pharmaceutical supply chain is the sequence of activities and process to bring medicines from Manufacturer to Customer.
+The Pharmaceutical supply chain is the sequence of activities and process to bring medicines from Manufacturer to Customer, and an intelligent search for medicines.
 
 
 #### Problems in Existing System
@@ -10,7 +10,7 @@ The Pharmaceutical supply chain is the sequence of activities and process to bri
 - Slow Process and Error prone paper work
 - Mutable and Invalid source
 - Lack of coordination
-
+- lack of knowledge of the right medicines for the set of symptoms
 
 #### What we are providing
 ---
@@ -20,6 +20,7 @@ The Pharmaceutical supply chain is the sequence of activities and process to bri
 - Traceability back to source of all materials
 - Seamless collaboration between all parties
 - Reduce paper work and Speedup process
+- Intelligent search engine for medicines, given the symptoms as input
 
 
 #### Contracts
@@ -44,6 +45,7 @@ The Pharmaceutical supply chain is the sequence of activities and process to bri
 - Metamask (Ethereum wallet)
 - Truffle
 - Web3 Python
+- spacy Python
 
 
 #### Prerequisites
@@ -52,6 +54,7 @@ The Pharmaceutical supply chain is the sequence of activities and process to bri
 - Solidity v0.5.0
 - Metamask (https://metamask.io)
 - Ganache (https://truffleframework.com/docs/ganache/quickstart)
+- Python's spacy model v2.1.3. (https://spacy.io/usage/vectors-similarity). Download the 'en_core_web_md' model to run the code.
 
 
 #### Setup
@@ -85,37 +88,3 @@ Link: ```http://remix.ethereum.org/#optimize=false&evmVersion=null&version=soljs
 5. Then deploy Customer contract by passing the address of the deployed admin contract.
 
 
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-
-
-Project requirements:
-=======
-#### Project requirements:
->>>>>>> bb3ea206a590f1e67fa540194c651d434a022196
-
-The project submission must include
-- A presentation of 6 slides detailing the features and technology highlights of your project
-- The complete code 
-- The complete code and the presentation must be available on github
-
-The project will be evaluated based on the following criteria
-- UI & Functionality
-- Inclusion of features with AJAX ,COMET. Web Services etc
-- Effective use of Frameworks
-- Intelligent Component of you project
-
-<<<<<<< HEAD
-=======
-236's part: 
-Statistics page - generate data for particular medicine by a manufacturer - manufacturing date, manufacturer, expiry date, medicine name and quantity and purchase date. 
->>>>>>> bb3ea206a590f1e67fa540194c651d434a022196
