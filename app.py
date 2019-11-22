@@ -40,9 +40,11 @@ class Admin(Resource):
         return make_response(render_template('admin.html'))
 
     def post(self):
-        res = requests.post(url + '/admin/getmandetails', json.dumps([request.form.get('manufacturer_option')]))
+        y = {'man_name':request.form.get('manufacturer_option')}
+        res = requests.post(url + '/admin/getmandetails', data=y)
         # res is a dictionary of dictionaries, where the keys are indexes
-        return jsonify(res)
+        res_json = res.json()
+        return jsonify(res_json)
 
 
 api.add_resource(Admin, '/admin')
@@ -54,10 +56,11 @@ class Manufacturer(Resource):
 
     def post(self):
         print("hi")
-        x = {'man_id': hc[request.form['man_name']], 'man_name': request.form['man_name'], 'med_id': request.form['med_id'], 'med_name': request.form['med_name'], 'quantity': request.form['quantity'], 'man_date': datetime.strftime(request.form['man_date']), 'exp_date': datetime.strftime(request.form['exp_date'])}
+        print(request.form['man_name'])
+        x = {'man_id': hc[request.form['man_name']], 'man_name': request.form['man_name'], 'med_id': '0', 'med_name': request.form['med_name'], 'quantity': request.form['quantity'], 'man_date': request.form['man_date'], 'exp_date': request.form['exp_date']}
         res = requests.post(url + '/manaddmedicines', data=x)
-        print(res['hash']) # byte 32
-        return jsonify(res)
+        print(res.json()['hash']) # byte 32
+        return res.json()['hash']
         # returns a Batch Number
 
 
@@ -72,12 +75,11 @@ class Wholesaler(Resource):
         x = {'man_id': hc[request.form['man_name']],
              'man_name': request.form['man_name'],
              'med_name': request.form['med_name'],
-             'med_id': request.form['med_id'],
              'quantity': request.form['quantity'], }
         print(x)
         res = requests.post(url + '/wsbuymedicines', data=x)
-        print(res['hash']) # byte 32
-        return jsonify(res)
+        print(res.json()['hash']) # byte 32
+        return res.json()['hash']
 
 
 api.add_resource(Wholesaler, '/wholesaler')
@@ -203,4 +205,4 @@ api.add_resource(SearchMedicines, '/searchMedicines')
 
 
 if __name__ == '__main__':
-    app.run()
+	app.run(host="127.0.0.1" ,port=5000, debug = True)
