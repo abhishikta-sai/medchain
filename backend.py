@@ -41,22 +41,24 @@ web3.eth.defaultAccount = web3.eth.accounts[0]
 admin = web3.eth.contract(address=Admin_address, abi=admin_json['abi'])
 ws = web3.eth.contract(address=ws_address, abi=ws_json['abi'])
 
-app = Flask(__name__)
-
 def addfromcsv_to_bc():
     df = pandas.read_csv("./Data/data.csv")
     for row in df.itertuples():
-        tx_hash = mnf[int(hc[str(row.Manufacturer)])].functions.addMedicineRecord(str(row.Manufacturer),int(row._6),int(row.Quantity),str(row.Name),str(row._4),str(row._5)).transact()
+        tx_hash = mnf[int(hc[str(row.Manufacturer)])].functions.addMedicineRecord(str(row.Manufacturer),int(0),int(row.Quantity),str(row.Name),str(row._4),str(row._5)).transact()
         tx_hash2 = web3.eth.waitForTransactionReceipt(tx_hash)
 
 #addfromcsv_to_bc()
 
-#print(admin.functions.recordCount().call())
+print(admin.functions.recordCount().call())
+
+app = Flask(__name__)
+
+
 
 @app.route("/manaddmedicines" , methods=['POST'])
 def addmedicines():
     records = request.form
-    tx_hash = mnf[int(records['man_id'])].functions.addMedicineRecord(str(records['man_name']),int(records['med_id']),int(records['quantity']),str(records['med_name']),records['man_date'],records['exp_date']).transact()
+    tx_hash = mnf[int(records['man_id'])].functions.addMedicineRecord(str(records['man_name']),int(0),int(records['quantity']),str(records['med_name']),records['man_date'],records['exp_date']).transact()
     tx_hash2 = web3.eth.waitForTransactionReceipt(tx_hash)
     print(tx_hash)
     return jsonify({'hash':str(tx_hash)}),200
@@ -66,7 +68,7 @@ def getmandetails():
     recordCount = admin.functions.recordCount().call()
     comp_record = dict()
     j = 0
-    man_name = eval(request.data)[0]
+    man_name = request.form['man_name']
     for i in range(0,recordCount):
         x = admin.functions.records(i).call()
         if(x[2]==man_name):
@@ -77,12 +79,12 @@ def getmandetails():
             temp_rec['med_id'] = x[3]
             temp_rec['quantity'] = x[4]
             temp_rec['batch_no'] = str(x[5])
-            temp_rec['med_name'] = x[8]
-            temp_rec['pkd_date'] = x[9]
-            temp_rec['exp_date'] = x[10]
+            temp_rec['med_name'] = x[7]
+            temp_rec['pkd_date'] = x[8]
+            temp_rec['exp_date'] = x[9]
             comp_record[str(j)] = temp_rec
-            print(type(x[4]))
             j = j+1
+    #print(comp_record)
     return jsonify(comp_record),200
 
 

@@ -56,7 +56,7 @@
         
     </div>
     <script>
-        function medicineDetails() 
+        function medicineDetails(Data) 
         {
             
             try
@@ -68,17 +68,21 @@
             }
             $("#medicine-holder").append($("<table></table>").attr("id","medicine-details"))
             $('#medicine-details').append($("<tr></tr>").attr("id","medicine-header"));
-            $('#medicine-header').append($("<td></td>").text('Medicine ID'));
             $('#medicine-header').append($("<td></td>").text('Medicine Name'));
             $('#medicine-header').append($("<td></td>").text('Quantity'));
             $('#medicine-header').append($("<td></td>").text('Mfg. Date'));
             $('#medicine-header').append($("<td></td>").text('Expiry Before'));
             $('#medicine-details').append($("<tr></tr>").attr("id","medicine-row"));
-            $('#medicine-row').append($("<td></td>").text('CET598'));
+            for (const key in Data) {
+
+            $('#medicine-details').append($("<tr></tr>").attr("id","medicine-row"));
+            $('#medicine-row').append($("<td></td>").text(Data[key][]));
             $('#medicine-row').append($("<td></td>").text('Okacet'));
             $('#medicine-row').append($("<td></td>").text('10'));
             $('#medicine-row').append($("<td></td>").text('07-19'));
             $('#medicine-row').append($("<td></td>").text('06-21'));
+            $('#medicine-details').append($("<tr></tr>").attr("id","medicine-row"));
+            }
             // for (i = 0;i < json['company_list'].length;i++)
             // {
             //     $('#company-list').append($('<option></option>').attr('value',json['company_list'][i]).text(json['company_list'][i]));

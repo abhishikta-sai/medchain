@@ -40,9 +40,11 @@ class Admin(Resource):
         return make_response(render_template('admin.html'))
 
     def post(self):
-        res = requests.post(url + '/admin/getmandetails', json.dumps([request.form.get('manufacturer_option')]))
+        y = {'man_name':request.form.get('manufacturer_option')}
+        res = requests.post(url + '/admin/getmandetails', data=y)
         # res is a dictionary of dictionaries, where the keys are indexes
-        return jsonify(res)
+        #print(res.json())
+        return jsonify(res.json())
 
 
 api.add_resource(Admin, '/admin')
@@ -203,4 +205,4 @@ api.add_resource(SearchMedicines, '/searchMedicines')
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug = True)
