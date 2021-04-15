@@ -88,3 +88,7 @@ Link: ```http://remix.ethereum.org/#optimize=false&evmVersion=null&version=soljs
 5. Then deploy Customer contract by passing the address of the deployed admin contract.
 
 
+#### Running the app
+```bash
+python app.py
+```
