@@ -91,4 +91,5 @@ Link: ```http://remix.ethereum.org/#optimize=false&evmVersion=null&version=soljs
 #### Running the app
 ```bash
 python app.py
+python backend.py
 ```
